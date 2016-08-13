@@ -21,7 +21,9 @@ require(["src/Game", "src/Tetris"], function(Game, Tetris) {
 
     tick: function() {
       if (this.hasLoad) {
-
+        this.tetris.handleInputs(input);
+        this.tetris.update();
+        this.tetris.draw(canvas.ctx);
       } else {
         this.hasLoad = content.progress() === 1;
 
