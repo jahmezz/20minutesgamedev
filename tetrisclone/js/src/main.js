@@ -16,13 +16,17 @@ require(["src/Game", "src/Tetris"], function(Game, Tetris) {
       content.load("blocks", "res/blocks.png");
       content.load("numbers", "res/numbers.png");
 
+      input.bindKey("space", input.Keys.SPACE);
+      input.bindKey("left", input.Keys.LEFT_ARROW, input.Keys.A);
+      input.bindKey("up", input.Keys.UP_ARROW, input.Keys.W);
+      input.bindKey("right", input.Keys.RIGHT_ARROW, input.Keys.D);
+      input.bindKey("down", input.Keys.DOWN_ARROW, input.Keys.S);
       this.hasLoad = false;
     },
 
     tick: function() {
       if (this.hasLoad) {
-        this.tetris.handleInputs(input);
-        this.tetris.update();
+        this.tetris.update(input);
         this.tetris.draw(canvas.ctx);
       } else {
         this.hasLoad = content.progress() === 1;
