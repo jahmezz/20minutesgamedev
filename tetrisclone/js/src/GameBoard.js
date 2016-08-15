@@ -30,6 +30,9 @@ define(["src/Numfont"], function(Numfont) {
       this.font.blue.draw(ctx,   tet.J, 432, 196, 5);
 
       this.font.gray.draw(ctx, tet.tot, 425, 221, 6);
+    },
+    drawBlock: function(ctx, block, x, y) {
+      var id = block.id;
     }
   });
 
