@@ -32,7 +32,13 @@ define(["src/Numfont"], function(Numfont) {
       this.font.gray.draw(ctx, tet.tot, 425, 221, 6);
     },
     drawBlock: function(ctx, block, x, y) {
-      var id = block.id;
+      var id = block.id,
+          size = 13;
+
+      x = 180 + x*12;
+      y = 4 + y*12;
+
+      ctx.drawImage(this.blocks, id*(size-1), 0, size, size, x, y, size, size);
     }
   });
 
