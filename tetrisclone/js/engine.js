@@ -217,7 +217,6 @@ var canvas, input, content;
     document.onkeyup = onup;
     document.onmouseup = onup;
 
-    console.log(Keys.T);
     return i;
   })();
 })();

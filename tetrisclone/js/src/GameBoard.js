@@ -19,6 +19,10 @@ define(["src/Numfont"], function(Numfont) {
       var tet = stat.tetraminos;
       ctx.drawImage(this.back, 0, 0);
 
+      this.font.gray.draw(ctx, stat.lvl, 113, 16, 5);
+      this.font.gray.draw(ctx, stat.lines, 113, 34, 5);
+      this.font.gray.draw(ctx, stat.score, 80, 52, 10);
+
       this.font.purple.draw(ctx, 42, 10, 10, 5);
 
       this.font.orange.draw(ctx, tet.L, 432, 52,  5);
