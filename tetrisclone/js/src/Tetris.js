@@ -2,14 +2,16 @@ define([
   "src/GameBoard",
   "src/StatManager",
   "src/Tetramino",
-  "src/Block"
-  ], function(GameBoard, StatManager, Tetramino, Block) {
+  "src/Block",
+  "src/Randomizer"
+  ], function(GameBoard, StatManager, Tetramino, Block, Randomizer) {
   var Tetris = Class.extend({
     init: function(cols, rows) {
       this.cols = cols;
       this.rows = rows;
       this.gameBoard = new GameBoard();
       this.stat = new StatManager();
+      this.random = new Randomizer();
 
       this.blockControl = [];
 
@@ -24,6 +26,7 @@ define([
           this.blockControl[i][j] = new Block(Block.NONE);
         }
       }
+      this.random.initialize();
       this.setNextTetramino();
     },
     update: function(input) {
@@ -40,6 +43,9 @@ define([
       }
       if(input.pressed("right")) {
         this.moveRight();
+      }
+      if(input.pressed("space")) {
+        this.hardDrop();
       }
 
       if (this.frames++ % 20 === 0) {
@@ -59,7 +65,7 @@ define([
       }
     },
     setNextTetramino: function() {
-      this.currentTetramino = new Tetramino(Tetramino.Z);
+      this.currentTetramino = new Tetramino(this.random.nextId());
       this.currentTetramino.x = 3;
       this.currentTetramino.x = 0;
 
@@ -100,6 +106,23 @@ define([
         ct.setTo(bc);
         this.checkRows();
         this.setNextTetramino();
+      }
+    },
+    hardDrop: function() {
+      var bc = this.blockControl,
+          ct = this.currentTetramino,
+          move = true;
+
+      while (move) {
+        if (ct.check(bc, 0, 1)) {
+          ct.y += 1;
+          this.stat.score += 2;
+        } else {
+          move = false;
+          ct.setTo(bc);
+          this.checkRows();
+          this.setNextTetramino();
+      }
       }
     },
     checkRows: function() {
