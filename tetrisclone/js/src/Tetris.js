@@ -6,6 +6,7 @@ define([
   "src/Randomizer"
   ], function(GameBoard, StatManager, Tetramino, Block, Randomizer) {
   var Tetris = Class.extend({
+    //initialize variables
     init: function(cols, rows) {
       this.cols = cols;
       this.rows = rows;
@@ -17,6 +18,7 @@ define([
 
       this.reset();
     },
+    //clear out the board
     reset: function() {
       this.frames = 1;
       this.blockControl = [];
@@ -32,6 +34,7 @@ define([
     update: function(input) {
       this.currentTetramino.setTo(this.blockControl, Block.NONE);
       
+      //move functions
       if(input.pressed("up")) {
         this.moveRotate();
       }
@@ -48,11 +51,13 @@ define([
         this.hardDrop();
       }
 
+      //move down every 20 frames
       if (this.frames++ % 20 === 0) {
         this.moveDown();
       }
       this.currentTetramino.setTo(this.blockControl);
     },
+    //draw a block if there is meant to be one on that part of the game board
     draw: function(ctx) {
       this.gameBoard.draw(ctx, this.stat);
       for (var i = 0; i < this.cols; i++) {
@@ -64,18 +69,24 @@ define([
         }
       }
     },
+    //grab new random tetramino
     setNextTetramino: function() {
       this.currentTetramino = new Tetramino(this.random.nextId());
+      //start it at (3, 0)
       this.currentTetramino.x = 3;
-      this.currentTetramino.x = 0;
+      this.currentTetramino.y = 0;
 
+      //increase tetramino count
       this.stat.incTetramino(this.currentTetramino.id);
     },
+    //move logic
     moveLeft: function() {
       var bc = this.blockControl,
           ct = this.currentTetramino;
 
+      //check if left is empty
       if (ct.check(bc, -1, 0)) {
+        //if so, move left
         ct.x -= 1;
       }
     },
@@ -88,6 +99,7 @@ define([
       }
     },
     moveRotate: function(dr) {
+      //listen to video again about this part
       dr = dr || 1;
       var bc = this.blockControl,
           ct = this.currentTetramino;
@@ -100,11 +112,15 @@ define([
       var bc = this.blockControl,
           ct = this.currentTetramino;
 
+      //nothing below, move down
       if (ct.check(bc, 0, 1)) {
         ct.y += 1;
+      //something below
       } else {
         ct.setTo(bc);
+        //delete row if line
         this.checkRows();
+        //grab next tetramino from bag
         this.setNextTetramino();
       }
     },
@@ -113,25 +129,31 @@ define([
           ct = this.currentTetramino,
           move = true;
 
+      //while there is room below
       while (move) {
+        //nothing below
         if (ct.check(bc, 0, 1)) {
           ct.y += 1;
+          //add score while dropping
           this.stat.score += 2;
         } else {
+          //reached end
           move = false;
           ct.setTo(bc);
           this.checkRows();
           this.setNextTetramino();
-      }
+        }
       }
     },
     checkRows: function() {
       var full, removed = 0;
 
       for (var i = this.rows-1; i >= 0; i--) {
+        //first, assume row is full of blocks
         full = true;
         for (var j = 0; j < this.cols; j++) {
           if (!this.blockControl[j][i].solid) {
+            //one is empty, not full
             full = false;
             break;
           }
