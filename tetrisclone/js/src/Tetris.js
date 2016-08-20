@@ -159,6 +159,8 @@ define([
           }
         }
 
+        //case: we have a line on this row
+        //remove and increment line count
         if (full) {
           this.removeRow(i);
           removed++;
@@ -166,16 +168,19 @@ define([
           i++;
         }
       }
+      //if we removed something, add score and see if there's a level up
       if (removed > 0) {
         this.stat.addScore(removed);
         this.stat.checkLvlUp();
       }
     },
 
+    //remove row from board
     removeRow: function(row) {
       var bc = this.blockControl;
       for (var i = row; i > 0; i--) {
         for (var j = 0; j < this.cols; j++) {
+          //move all blocks from that removed row and above, down one
           bc[j][i].setType(bc[j][i - 1].id);
         }
       }

@@ -1,4 +1,5 @@
 define(function() {
+  //defined shapes
   var ShapeDef = {
     L: "001" + "111" + "000",
     I: "0000 1111 0000 0000",
@@ -11,8 +12,14 @@ define(function() {
 
   var ids = [];
 
+
   for (var sd in ShapeDef) {
+    //piecing apart this regex
+    //\s means whitespace, + means one or more whitespaces
+    ///g global. replace all
+    //all together, it means delete ALL whitespaces in the string 
     ShapeDef[sd] = ShapeDef[sd].replace(/\s+/g, "");
+    //save to ids
     ids.push(sd);
   }
 
