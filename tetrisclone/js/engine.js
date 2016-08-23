@@ -1,6 +1,7 @@
 var canvas, input, content;
 
 (function() {
+  //setup canvas
   canvas = (function() {
     var c = {},
       frame = document.getElementsByTagName("canvas")[0],

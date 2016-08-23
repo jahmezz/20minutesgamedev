@@ -1,9 +1,14 @@
 define(["src/Numfont"], function(Numfont) {
   var GameBoard = Class.extend({
     init: function() {
+      //grab back, block and num from content manager
+      //back is background
+      //blocks is block colors
+      //num is number image
       this.back = content.get("back");
       this.blocks = content.get("blocks");
       var num = content.get("numbers");
+      //grab images for color
       this.font = {
         gray  : new Numfont(num, 0, 9),
         cyan  : new Numfont(num, 9, 9),
@@ -16,9 +21,12 @@ define(["src/Numfont"], function(Numfont) {
       };
     },
     draw: function(ctx, stat) {
+      //grab tetramino counts and total
       var tet = stat.tetraminos;
+      //draw the background
       ctx.drawImage(this.back, 0, 0);
 
+      //draw numbers
       this.font.gray.draw(ctx, stat.lvl, 113, 16, 5);
       this.font.gray.draw(ctx, stat.lines, 113, 34, 5);
       this.font.gray.draw(ctx, stat.score, 80, 52, 10);
@@ -36,9 +44,13 @@ define(["src/Numfont"], function(Numfont) {
       this.font.gray.draw(ctx, tet.tot, 425, 221, 6);
     },
     drawBlock: function(ctx, block, x, y) {
+      //draw a block based on board placement
+      //id is blocks id...
+      //size is ?
       var id = block.id,
           size = 13;
 
+      //start at x/y pixels and add 12 for each square i want to scoot over
       x = 180 + x*12;
       y = 4 + y*12;
 

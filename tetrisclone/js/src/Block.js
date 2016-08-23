@@ -1,5 +1,5 @@
 define(function() {
-
+  //each shape has an id
   var drawIds = {
     NONE: 0,
     I: 1,
@@ -15,7 +15,9 @@ define(function() {
       this.setType(id || "none");
     },
     setType: function(id) {
+      //if the id is a number use it, if not, take from drawids[id]
       this.id = typeof id === "number" ? id : drawIds[id.toUpperCase()];
+      //if the id is not none, this block is solid
       this.solid = this.id !== drawIds.NONE;
     }
   });
