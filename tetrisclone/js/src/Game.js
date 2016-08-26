@@ -10,12 +10,13 @@ define(function() {
     window.cancelAnimationFrame = window[v + "CancelAnimationFrame"] ||
       window[v + "CancelRequestAnimationFrame"];
   }
-  //base class
+  //base class. App is based on this.
   var Game = Class.extend({
     tick: function() {
       console.warn("should be overridden by child class!");
     },
 
+    //stop means cancel the current frame and 
     stop: function() {
       //cancel current frame
       if (this._reqframe) {
@@ -24,6 +25,7 @@ define(function() {
       this._reqframe = null;
       this._running = false;
     },
+    //
     run: function() {
       if (this._running) return;
       this._running = true;

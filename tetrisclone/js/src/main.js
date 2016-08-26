@@ -9,8 +9,8 @@ requirejs.config({
   }
 });
 //actually fetch resources for function
+//Game at the high level is...
 require(["src/Game", "src/Tetris"], function(Game, Tetris) {
-  //RETURN AND WRITE COMMENT HERE
   var App = Game.extend({
     init: function() {
       //set up canvas
@@ -39,9 +39,11 @@ require(["src/Game", "src/Tetris"], function(Game, Tetris) {
       if (this.hasLoad) {
         this.tetris.update(input);
         this.tetris.draw(canvas.ctx);
+      //loading...
       } else {
         this.hasLoad = content.progress() === 1;
         //if loaded, start new tetris game
+        //takes cols, rows
         if(this.hasLoad) {
           this.tetris = new Tetris(10, 22);
         }
