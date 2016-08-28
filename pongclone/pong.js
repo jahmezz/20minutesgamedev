@@ -30,11 +30,6 @@ var step = function() {
   animate(step);
 };
 
-//update functions
-var update = function() {
-  ball.update();
-};
-
 //attach update function to ball
 Ball.prototype.update = function() {
   this.x += this.x_speed;
@@ -101,6 +96,138 @@ Ball.prototype.render = function() {
   //fill it in
   context.fill();
 };
+
+//update functions
+var update = function() {
+  player.update();
+  computer.update(ball);
+  ball.update(player.paddle, computer.paddle);
+};
+
+Computer.prototype.update = function(ball) {
+  //computer reacts to ball
+  var x_pos = ball.x;
+  //break this down. paddle width/2
+  //-(middle of paddle - x of ball)
+  var diff = -((this.paddle.x + (this.paddle.width / 2)) - x_pos);
+  //if the ball is > 4 to the left, max speed
+  if(diff < -4) { // max speed left
+    diff = -5;
+  //right
+  } else if(diff > 4) { // max speed right
+    diff = 5;
+  }
+  //move the diff
+  this.paddle.move(diff, 0);
+  //hit wall
+  if(this.paddle.x < 0) {
+    this.paddle.x = 0;
+  //hit wall
+  } else if (this.paddle.x + this.paddle.width > 400) {
+    this.paddle.x = 400 - this.paddle.width;
+  }
+};
+
+Player.prototype.update = function() {
+  //loop through keys
+  for(var key in keysDown) {
+    //get number
+    var value = Number(key);
+    //left
+    if(value == 37) { // left arrow
+      this.paddle.move(-4, 0);
+    //right
+    } else if (value == 39) { // right arrow
+      this.paddle.move(4, 0);
+    //nothing
+    } else {
+      this.paddle.move(0, 0);
+    }
+  }
+};
+
+Paddle.prototype.move = function(x, y) {
+  this.x += x;
+  this.y += y;
+  this.x_speed = x;
+  this.y_speed = y;
+  if(this.x < 0) { // all the way to the left
+    this.x = 0;
+    this.x_speed = 0;
+  } else if (this.x + this.width > 400) { // all the way to the right
+    this.x = 400 - this.width;
+    this.x_speed = 0;
+  }
+}
+
+//ball update
+Ball.prototype.update = function(paddle1, paddle2) {
+  //move ball
+  this.x += this.x_speed;
+  this.y += this.y_speed;
+  //top of ball
+  var left_x = this.x - 5;
+  var top_y = this.y - 5;
+  //bottom of ball
+  var right_x = this.x + 5;
+  var bottom_y = this.y + 5;
+
+  if(left_x < 0) { // hitting the left wall
+    this.x = 5;
+    //bounce off
+    this.x_speed = -this.x_speed;
+  } else if(this.x + 5 > 400) { // hitting the right wall
+    this.x = 395;
+    //bounce
+    this.x_speed = -this.x_speed;
+  }
+
+  //ball went off top or bottom. reset to center
+  if(this.y < 0 || this.y > 600) { // a point was scored
+    this.x_speed = 0;
+    this.y_speed = 3;
+    this.x = 200;
+    this.y = 300;
+  }
+
+  //if top of ball is below a certain point
+  if(top_y > 300) {
+    //if top of ball is below hitting end of paddle, bottom of ball is above other end of paddle
+    //left of ball is to the left of right end of paddle, and right of ball is right of left paddle
+    if(top_y < (paddle1.y + paddle1.height) && bottom_y > paddle1.y && left_x < (paddle1.x + paddle1.width) && right_x > paddle1.x) {
+      //bounce
+      this.y_speed = -3;
+      //speed of ball is based on speed of paddle
+      this.x_speed += (paddle1.x_speed / 2);
+      //move
+      this.y += this.y_speed;
+    }
+  //top of ball is not below a certain point
+  } else {
+    //if top of ball is below paddle, bottom of ball is above paddle, left of ball is on paddle
+    //and right of ball is on paddle
+    if(top_y < (paddle2.y + paddle2.height) && bottom_y > paddle2.y && left_x < (paddle2.x + paddle2.width) && right_x > paddle2.x) {
+      // hit the computer's paddle
+      this.y_speed = 3;
+      this.x_speed += (paddle2.x_speed / 2);
+      this.y += this.y_speed;
+    }
+  }
+};
+
+//events
+var keysDown = {};
+
+//record keydown for as long as key is down
+window.addEventListener("keydown", function(event) {
+  keysDown[event.keyCode] = true;
+});
+//remove keydown when key up
+window.addEventListener("keyup", function(event) {
+  delete keysDown[event.keyCode];
+});
+
+
 
 //draw game
 var player = new Player();
