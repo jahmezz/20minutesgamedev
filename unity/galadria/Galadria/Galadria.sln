@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{BB89FDFF-0BBF-A45F-11C6-E5FDA5FFAA0A}") = "Galadria", "Assembly-CSharp.csproj", "{13736DFA-5B0A-80B1-9798-847591D42CD3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13736DFA-5B0A-80B1-9798-847591D42CD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13736DFA-5B0A-80B1-9798-847591D42CD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13736DFA-5B0A-80B1-9798-847591D42CD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13736DFA-5B0A-80B1-9798-847591D42CD3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
