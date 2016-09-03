@@ -85,6 +85,7 @@
 -define:UNITY_EDITOR_64
 -define:UNITY_EDITOR_OSX
 -define:UNITY_TEAM_LICENSE
+'Assets/DestroyByBoundary.cs'
 'Assets/Done/Done_Scripts/Done_BGScroller.cs'
 'Assets/Done/Done_Scripts/Done_DestroyByBoundary.cs'
 'Assets/Done/Done_Scripts/Done_DestroyByContact.cs'
@@ -95,5 +96,7 @@
 'Assets/Done/Done_Scripts/Done_PlayerController.cs'
 'Assets/Done/Done_Scripts/Done_RandomRotator.cs'
 'Assets/Done/Done_Scripts/Done_WeaponController.cs'
+'Assets/Scripts/Mover.cs'
+'Assets/Scripts/PlayerController.cs'
 -r:'/Applications/Unity/Unity.app/Contents/Mono/lib/mono/unity/System.Runtime.Serialization.dll'
 -r:'/Applications/Unity/Unity.app/Contents/Mono/lib/mono/unity/System.Xml.Linq.dll'
