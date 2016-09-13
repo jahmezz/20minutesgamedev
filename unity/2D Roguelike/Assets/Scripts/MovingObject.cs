@@ -57,5 +57,5 @@ public abstract class MovingObject : MonoBehaviour {
 		}
 	}
 
-	protected abstract OnCantMove <T> (T component) where T : Component;
+	protected abstract void OnCantMove <T> (T component) where T : Component;
 }
