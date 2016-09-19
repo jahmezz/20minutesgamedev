@@ -30,6 +30,10 @@ public class Player : MovingObject {
 		base.Start ();
 	}
 
+	private void OnDisable () {
+		GameManager.instance.playerFoodPoints = food;
+	}
+
 	void Update () {
 		if (!GameManager.instance.playersTurn)
 			return;
@@ -37,7 +41,7 @@ public class Player : MovingObject {
 		int horizontal = 0;
 		int vertical = 0;
 
-		#if UNITY_STANDALONE || UNITY_WEBPLAYER
+		#if UNITY_STANDALONE || UNITY_WEBPLAYER || UNITY_WEBGL
 
 		horizontal = (int)Input.GetAxisRaw ("Horizontal");
 		vertical = (int)Input.GetAxisRaw ("Vertical");
@@ -68,7 +72,6 @@ public class Player : MovingObject {
 		#endif
 
 		if (horizontal != 0 || vertical != 0) {
-			Debug.Log("moving");
 			AttemptMove<Wall> (horizontal, vertical);
 		}
 	}
@@ -90,25 +93,15 @@ public class Player : MovingObject {
 		}
 	}
 
-	protected override void OnCantMove <T> (T component) {
-		Wall hitWall = component as Wall;
-		hitWall.DamageWall (wallDamage);
-		animator.SetTrigger ("playerChop");
-	}
-
 	private void Restart () {
 		SceneManager.LoadScene (0);
 	}
 
 	public void LoseFood (int loss) {
-		animator.SetTrigger ("PlayerHit");
+		animator.SetTrigger ("playerHit");
 		food -= loss;
 		foodText.text = "-" + loss + " Food: " + food;
 		CheckIfGameOver ();
-	}
-
-	private void OnDisable () {
-		GameManager.instance.playerFoodPoints = food;
 	}
 
 	protected override void AttemptMove <T> (int xDir, int yDir) {
@@ -127,6 +120,12 @@ public class Player : MovingObject {
 		CheckIfGameOver ();
 
 		GameManager.instance.playersTurn = false;
+	}
+
+	protected override void OnCantMove <T> (T component) {
+		Wall hitWall = component as Wall;
+		hitWall.DamageWall (wallDamage);
+		animator.SetTrigger ("playerChop");
 	}
 
 	private void CheckIfGameOver () {

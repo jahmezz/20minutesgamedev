@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour {
 
 	public void GameOver() {
 		levelText.text = "After " + level + " days, you starved.";
+		levelImage.SetActive(true);
 		enabled = false;
 	}
 
@@ -85,5 +86,8 @@ public class GameManager : MonoBehaviour {
 			enemies [i].MoveEnemy ();
 			yield return new WaitForSeconds (enemies [i].moveTime);
 		}
+
+		playersTurn = true;
+		enemiesMoving = false;
 	}
 }
