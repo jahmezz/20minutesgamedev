@@ -87,6 +87,8 @@
 -define:UNITY_EDITOR_OSX
 -define:UNITY_TEAM_LICENSE
 -define:CROSS_PLATFORM_INPUT
-'Assets/Parallax.cs'
+'Assets/Scripts/ArmRotation.cs'
+'Assets/Scripts/Parallax.cs'
+'Assets/Scripts/Tiling.cs'
 -r:'/Applications/Unity/Unity.app/Contents/Mono/lib/mono/unity/System.Runtime.Serialization.dll'
 -r:'/Applications/Unity/Unity.app/Contents/Mono/lib/mono/unity/System.Xml.Linq.dll'
