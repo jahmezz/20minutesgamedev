@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: c68d4635767204a2d9828166fec4e7c6
-timeCreated: 1474559565
+timeCreated: 1475043272
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -13,6 +13,14 @@ TextureImporter:
     21300012: Platform4
     21300014: EnvironmentSpriteAtlas_7
     21300016: BackgroundMountainsBlue
+    21300018: BackgroundRed
+    21300020: BackgroundOrange
+    21300022: Foreground
+    21300024: Platform1
+    21300026: Platform2
+    21300028: Platform3
+    21300030: Platform4
+    21300032: BackgroundBlue
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -35,7 +43,7 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -2
   maxTextureSize: 2048
   textureSettings:
     filterMode: 0
@@ -62,7 +70,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BackgroundMountainsPurple
+      name: BackgroundRed
       rect:
         serializedVersion: 2
         x: 0
@@ -75,16 +83,16 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: BackgroundMountainsOrange
+      name: BackgroundOrange
       rect:
         serializedVersion: 2
         x: 0
         y: 329
         width: 512
-        height: 92
+        height: 90
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 1, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
@@ -153,29 +161,16 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EnvironmentSpriteAtlas_7
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 135
-        width: 7
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: BackgroundMountainsBlue
+      name: BackgroundBlue
       rect:
         serializedVersion: 2
         x: 0
-        y: 237
+        y: 236
         width: 512
-        height: 92
+        height: 91
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     outline: []

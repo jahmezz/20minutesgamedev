@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 5dad3d06c1b4c4f859207981ace30955
-timeCreated: 1474559109
+timeCreated: 1475043443
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -38,7 +38,7 @@ TextureImporter:
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -2
   maxTextureSize: 2048
   textureSettings:
     filterMode: 0
@@ -189,8 +189,8 @@ TextureImporter:
         y: 153
         width: 12
         height: 5
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.18324788, y: 0.58795774}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
