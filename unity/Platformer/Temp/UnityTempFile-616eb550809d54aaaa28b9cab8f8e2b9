@@ -87,6 +87,9 @@
 -define:UNITY_EDITOR_OSX
 -define:UNITY_TEAM_LICENSE
 -define:CROSS_PLATFORM_INPUT
+'Assets/GameMaster.cs'
+'Assets/MoveTrail.cs'
+'Assets/Player.cs'
 'Assets/Scripts/ArmRotation.cs'
 'Assets/Scripts/Parallax.cs'
 'Assets/Scripts/Tiling.cs'

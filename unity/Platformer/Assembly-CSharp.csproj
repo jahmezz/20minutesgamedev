@@ -45,7 +45,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\GameMaster.cs" />
      <Compile Include="Assets\MoveTrail.cs" />
+     <Compile Include="Assets\Player.cs" />
      <Compile Include="Assets\Scripts\ArmRotation.cs" />
      <Compile Include="Assets\Scripts\Parallax.cs" />
      <Compile Include="Assets\Scripts\Tiling.cs" />

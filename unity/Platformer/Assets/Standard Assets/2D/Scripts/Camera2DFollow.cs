@@ -11,24 +11,29 @@ namespace UnityStandardAssets._2D
         public float lookAheadReturnSpeed = 0.5f;
         public float lookAheadMoveThreshold = 0.1f;
 
-        private float m_OffsetZ;
-        private Vector3 m_LastTargetPosition;
-        private Vector3 m_CurrentVelocity;
-        private Vector3 m_LookAheadPos;
+		private float m_OffsetZ;
+		private Vector3 m_LastTargetPosition;
+		private Vector3 m_CurrentVelocity;
+		private Vector3 m_LookAheadPos;
+
+		public float cameraMinY;
+
+		private float nextTimeToSearch = 0.5f;
 
         // Use this for initialization
-        private void Start()
-        {
-            m_LastTargetPosition = target.position;
-            m_OffsetZ = (transform.position - target.position).z;
-            transform.parent = null;
-        }
-
-
-        // Update is called once per frame
-        private void Update()
-        {
-            // only update lookahead pos if accelerating or changed direction
+		private void Start () {
+			m_LastTargetPosition = target.position;
+			m_OffsetZ = (transform.position - target.position).z;
+			transform.parent = null;
+		}
+        
+		// Update is called once per frame
+        private void Update() {
+			if (target == null) {
+				FindPlayer ();
+				return;
+			}
+			// only update lookahead pos if accelerating or changed direction
             float xMoveDelta = (target.position - m_LastTargetPosition).x;
 
             bool updateLookAheadTarget = Mathf.Abs(xMoveDelta) > lookAheadMoveThreshold;
@@ -45,9 +50,21 @@ namespace UnityStandardAssets._2D
             Vector3 aheadTargetPos = target.position + m_LookAheadPos + Vector3.forward*m_OffsetZ;
             Vector3 newPos = Vector3.SmoothDamp(transform.position, aheadTargetPos, ref m_CurrentVelocity, damping);
 
+			//apply clamping
+			newPos = new Vector3(newPos.x, Mathf.Clamp(newPos.y, cameraMinY, Mathf.Infinity), newPos.z);
             transform.position = newPos;
 
             m_LastTargetPosition = target.position;
         }
+		private void FindPlayer() {
+			if(nextTimeToSearch <= Time.time) {
+				GameObject searchResult = GameObject.FindGameObjectWithTag("Player");
+				if (searchResult != null) {
+					Debug.Log ("new target");
+					target = searchResult.transform;
+				}
+				nextTimeToSearch += 0.5f;
+			}
+		}
     }
 }
