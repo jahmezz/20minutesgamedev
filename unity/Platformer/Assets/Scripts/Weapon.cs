@@ -4,7 +4,7 @@ using System.Collections;
 public class Weapon : MonoBehaviour {
 
 	public float fireRate = 0;
-	public float damage = 10;
+	public int damage = 10;
 	public LayerMask whatToHit;
 
 	public Transform BulletTrailPrefab;
@@ -48,6 +48,11 @@ public class Weapon : MonoBehaviour {
 		Debug.DrawLine (firePointPosition, (mousePosition-firePointPosition)*100, Color.cyan);
 		if (hit.collider != null) {
 			Debug.DrawLine (firePointPosition, hit.point, Color.red);
+			Enemy enemy = hit.collider.GetComponent<Enemy> ();
+			if(enemy != null) {
+				enemy.DamageEnemy (damage);
+				Debug.Log ("Damaged enemy 10");
+			}
 		}
 	}
 
