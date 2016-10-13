@@ -57,7 +57,6 @@ public class EnemyAI : MonoBehaviour {
 			target = result.transform;
 
 			StartCoroutine (UpdatePath ());
-			return false;
 		}
 	}
 
@@ -67,7 +66,6 @@ public class EnemyAI : MonoBehaviour {
 				searchingForPlayer = true;
 				StartCoroutine (SearchForPlayer ());
 			}
-			return false;
 		}
 
 		seeker.StartPath (transform.position, target.position, OnPathComplete);
