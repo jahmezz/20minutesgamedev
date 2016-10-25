@@ -6,13 +6,19 @@ namespace UnityStandardAssets._2D
     public class PlatformerCharacter2D : MonoBehaviour
     {
         [SerializeField] private float m_MaxSpeed = 10f;                    // The fastest the player can travel in the x axis.
-        [SerializeField] private float m_JumpForce = 400f;                  // Amount of force added when the player jumps.
-        [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;  // Amount of maxSpeed applied to crouching movement. 1 = 100%
+        [SerializeField] private float m_JumpForce = 800f;                  // Amount of force added when the player jumps.
+		[SerializeField] private float m_dashVelocity = 30f;					// dash
         [SerializeField] private bool m_AirControl = false;                 // Whether or not a player can steer while jumping;
         [SerializeField] private LayerMask m_WhatIsGround;                  // A mask determining what is ground to the character
 
+		private float currentSpeedX;
+		private float currentSpeedY;
+
 		private int maxJumps = 3;
 		private int jumpCount;
+
+		private int maxDashes = 3;
+		private int dashCount;
 
         private Transform m_GroundCheck;    // A position marking where to check if the player is grounded.
         const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
@@ -35,10 +41,10 @@ namespace UnityStandardAssets._2D
 
 		private void resetJumps() {
 			jumpCount = maxJumps - 1;
+			dashCount = maxDashes - 1;
 		}
 
-        private void FixedUpdate()
-        {
+        private void FixedUpdate() {
             m_Grounded = false;
 
             // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
@@ -56,7 +62,12 @@ namespace UnityStandardAssets._2D
             m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
         }
 
-        public void Move(float move, bool jump)
+		private float accelX = 0;
+		private float accelY = 0;
+
+		private float dragX = 0;
+
+		public void Move(float move, bool jump, bool dash)
         {
 
             //only control the player if grounded or airControl is turned on
@@ -66,7 +77,7 @@ namespace UnityStandardAssets._2D
                 m_Anim.SetFloat("Speed", Mathf.Abs(move));
 
                 // Move the character
-                m_Rigidbody2D.velocity = new Vector2(move*m_MaxSpeed, m_Rigidbody2D.velocity.y);
+				m_Rigidbody2D.velocity = new Vector2(move*m_MaxSpeed + currentSpeedX, m_Rigidbody2D.velocity.y);
 
                 // If the input is moving the player right and the player is facing left...
                 if (move > 0 && !m_FacingRight)
@@ -89,7 +100,16 @@ namespace UnityStandardAssets._2D
                 m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
 				jumpCount--;
 				Debug.Log ("Jump pressed. Jumps left: " + jumpCount);
-            }
+			}
+			if (dash && dashCount > 0) {
+				// Add a horizontal force to the player.
+				int direction = m_FacingRight ? 1 : -1;
+				m_Rigidbody2D.velocity = new Vector2(direction * m_dashVelocity + currentSpeedX, m_Rigidbody2D.velocity.y);
+				dashCount--;
+				Debug.Log ("Dash pressed. Dashes left: " + dashCount);
+			}
+
+			currentSpeedX = m_Rigidbody2D.velocity.x;
         }
 
         private void Flip() {
