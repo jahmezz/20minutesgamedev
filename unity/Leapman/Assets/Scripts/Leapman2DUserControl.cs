@@ -7,23 +7,27 @@ namespace Leapman {
 	public class Leapman2DUserControl : MonoBehaviour {
 		private LeapmanCharacter2D Character;
 		private bool IsJump;
+		private bool IsDash;
 
-		private void Awake () {
+		private void Awake() {
 			Character = GetComponent<LeapmanCharacter2D> ();
 		}
 
-		private void Update () {
+		private void Update() {
 			if (!IsJump) {
 				IsJump = CrossPlatformInputManager.GetButtonDown ("Jump");
 			}
+			if (!IsDash) {
+				IsDash = CrossPlatformInputManager.GetButtonDown ("Dash");
+			}
 		}
 
-		private void FixedUpdate () {
-			bool crouch = Input.GetKey (KeyCode.LeftControl);
+		private void FixedUpdate() {
 			float h = CrossPlatformInputManager.GetAxis ("Horizontal");
 
-			Character.Move (h, IsJump);
+			Character.Move (h, IsJump, IsDash);
 			IsJump = false;
+			IsDash = false;
 		}
 	}
 }

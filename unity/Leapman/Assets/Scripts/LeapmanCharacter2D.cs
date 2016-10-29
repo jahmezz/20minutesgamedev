@@ -4,7 +4,8 @@ using UnityEngine;
 namespace Leapman {
 	public class LeapmanCharacter2D : MonoBehaviour {
 		[SerializeField] private float MaxSpeed = 10f;
-		[SerializeField] private float JumpForce = 400f;
+		[SerializeField] private float JumpForce = 800f;
+		[SerializeField] private float DashForce = 1f;
 		[SerializeField] private LayerMask GroundLayers;
 
 		private Transform GroundCheck;
@@ -19,18 +20,26 @@ namespace Leapman {
 		// Radius of the overlap circle to determine if the player can stand up
 		private Animator Animator;
 		// Reference to the player's animator component.
-		private Rigidbody2D Rigidbody2D;
+		private Rigidbody2D rb;
 		private bool FacingRight = true;
 		// For determining which way the player is currently facing.
+		private int maxJumps = 3;
+		private int jumpsLeft;
 
 		private void Awake() {
 			// Setting up references.
 			GroundCheck = transform.Find ("GroundCheck");
 			CeilingCheck = transform.Find ("CeilingCheck");
 			Animator = GetComponent<Animator> ();
-			Rigidbody2D = GetComponent<Rigidbody2D> ();
+			rb = GetComponent<Rigidbody2D> ();
 		}
 
+		private void SetMaxSpeedX() {
+			var vel = rb.velocity;
+			if (vel.x > MaxSpeed || -vel.x < -MaxSpeed) {
+				vel.x = MaxSpeed;
+			}
+		}
 
 		private void FixedUpdate() {
 			Grounded = false;
@@ -39,23 +48,33 @@ namespace Leapman {
 			// This can be done using layers instead but Sample Assets will not overwrite your project settings.
 			Collider2D[] colliders = Physics2D.OverlapCircleAll (GroundCheck.position, GroundRadius, GroundLayers);
 			for (int i = 0; i < colliders.Length; i++) {
-				if (colliders [i].gameObject != gameObject)
+				if (colliders [i].gameObject != gameObject) {
 					Grounded = true;
+					resetCounts ();
+				}
 			}
 			Animator.SetBool ("Ground", Grounded);
 
 			// Set the vertical animation
-			Animator.SetFloat ("vSpeed", Rigidbody2D.velocity.y);
+			Animator.SetFloat ("vSpeed", rb.velocity.y);
 		}
 
+		private void resetCounts() {
+			jumpsLeft = 2;
+		}
 
-		public void Move(float move, bool jump) {
+		float friction = 0.95f;
+
+		public void Move(float move, bool jump, bool dash) {
 			// The Speed animator parameter is set to the absolute value of the horizontal input.
 			Animator.SetFloat ("Speed", Mathf.Abs (move));
 
-			// Move the character
-			Rigidbody2D.velocity = new Vector2 (move * MaxSpeed, Rigidbody2D.velocity.y);
 
+			// Move the character
+			rb.AddRelativeForce (new Vector2 (move * 100, 0));
+			var vel = rb.velocity;
+			vel.x *= friction;
+			rb.velocity = vel;
 			// If the input is moving the player right and the player is facing left...
 			if (move > 0 && !FacingRight) {
 				// ... flip the player.
@@ -67,11 +86,19 @@ namespace Leapman {
 				Flip ();
 			}
 			// If the player should jump...
-			if (Grounded && jump && Animator.GetBool ("Ground")) {
+			if (jumpsLeft > 0 && jump) {
 				// Add a vertical force to the player.
 				Grounded = false;
 				Animator.SetBool ("Ground", false);
-				Rigidbody2D.AddForce (new Vector2 (0f, JumpForce));
+				vel.y = 0;
+				rb.velocity = vel;
+				rb.AddForce (new Vector2 (0f, JumpForce));
+				jumpsLeft--;
+			}
+			if (Grounded && dash) {
+				// Add a horizontal force to the player.
+				var direction = FacingRight ? 1 : -1;
+				rb.AddRelativeForce (new Vector2 (direction * DashForce, 0f));
 			}
 		}
 
