@@ -1,12 +1,14 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Leapman {
 	public class LeapmanCharacter2D : MonoBehaviour {
 		[SerializeField] private float MaxSpeed = 10f;
 		[SerializeField] private float JumpForce = 800f;
-		[SerializeField] private float DashForce = 1f;
+		[SerializeField] private float DashVelocity = 30f;
 		[SerializeField] private LayerMask GroundLayers;
+		[SerializeField] public Text speedText;
 
 		private Transform GroundCheck;
 		// A position marking where to check if the player is grounded.
@@ -25,6 +27,7 @@ namespace Leapman {
 		// For determining which way the player is currently facing.
 		private int maxJumps = 3;
 		private int jumpsLeft;
+		private int direction;
 
 		private void Awake() {
 			// Setting up references.
@@ -32,13 +35,6 @@ namespace Leapman {
 			CeilingCheck = transform.Find ("CeilingCheck");
 			Animator = GetComponent<Animator> ();
 			rb = GetComponent<Rigidbody2D> ();
-		}
-
-		private void SetMaxSpeedX() {
-			var vel = rb.velocity;
-			if (vel.x > MaxSpeed || -vel.x < -MaxSpeed) {
-				vel.x = MaxSpeed;
-			}
 		}
 
 		private void FixedUpdate() {
@@ -64,48 +60,65 @@ namespace Leapman {
 		}
 
 		float friction = 0.95f;
+		float airFriction = 0.98f;
 
 		public void Move(float move, bool jump, bool dash) {
 			// The Speed animator parameter is set to the absolute value of the horizontal input.
 			Animator.SetFloat ("Speed", Mathf.Abs (move));
 
-
 			// Move the character
-			rb.AddRelativeForce (new Vector2 (move * 100, 0));
 			var vel = rb.velocity;
-			vel.x *= friction;
+			if (vel.x < MaxSpeed && vel.x > -MaxSpeed) {
+				rb.AddRelativeForce (new Vector2 (move * 100, 0));
+			}
+
+			checkFlip (move);
+
+			if (Grounded) {
+				vel.x *= friction;
+			} else {
+				vel.x *= airFriction;
+			}
+			if (jumpsLeft > 0 && jump) {
+				// Add a vertical force to the player.
+				if (!Grounded) {
+					vel.x = 0;
+				}
+
+				Grounded = false;
+				Animator.SetBool ("Ground", false);
+
+
+				vel.y = 0;
+				rb.AddForce (new Vector2 (0f, JumpForce));
+				jumpsLeft--;
+			}
+			if (Grounded && dash) {
+				//dash has set velocity
+				vel.x = direction * DashVelocity;
+				vel.y = 0f;
+			}
 			rb.velocity = vel;
+			speedText.text = "Speed: " + (int)rb.velocity.x;
+		}
+
+		private void checkFlip(float move) {
 			// If the input is moving the player right and the player is facing left...
 			if (move > 0 && !FacingRight) {
 				// ... flip the player.
 				Flip ();
 			}
-                // Otherwise if the input is moving the player left and the player is facing right...
-            else if (move < 0 && FacingRight) {
+			// Otherwise if the input is moving the player left and the player is facing right...
+			else if (move < 0 && FacingRight) {
 				// ... flip the player.
 				Flip ();
-			}
-			// If the player should jump...
-			if (jumpsLeft > 0 && jump) {
-				// Add a vertical force to the player.
-				Grounded = false;
-				Animator.SetBool ("Ground", false);
-				vel.y = 0;
-				rb.velocity = vel;
-				rb.AddForce (new Vector2 (0f, JumpForce));
-				jumpsLeft--;
-			}
-			if (Grounded && dash) {
-				// Add a horizontal force to the player.
-				var direction = FacingRight ? 1 : -1;
-				rb.AddRelativeForce (new Vector2 (direction * DashForce, 0f));
 			}
 		}
 
 		private void Flip() {
 			// Switch the way the player is labelled as facing.
 			FacingRight = !FacingRight;
-
+			direction = FacingRight ? 1 : -1;
 			// Multiply the player's x local scale by -1.
 			Vector3 theScale = transform.localScale;
 			theScale.x *= -1;
