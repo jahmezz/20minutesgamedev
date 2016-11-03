@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 namespace Leapman {
 	public class LeapmanCharacter2D : MonoBehaviour {
@@ -9,6 +10,9 @@ namespace Leapman {
 		[SerializeField] private float DashVelocity = 30f;
 		[SerializeField] private LayerMask GroundLayers;
 		[SerializeField] public Text speedText;
+		public Text dashText;
+		public int dashCount = 3;
+		private int blinkCount = 3;
 
 		private Transform GroundCheck;
 		// A position marking where to check if the player is grounded.
@@ -62,6 +66,11 @@ namespace Leapman {
 		float friction = 0.95f;
 		float airFriction = 0.98f;
 
+		public void Blink() {
+			var MaxDistance = 5f;
+			//read inputs for 2 seconds
+		}
+
 		public void Move(float move, bool jump, bool dash) {
 			// The Speed animator parameter is set to the absolute value of the horizontal input.
 			Animator.SetFloat ("Speed", Mathf.Abs (move));
@@ -80,7 +89,7 @@ namespace Leapman {
 				vel.x *= airFriction;
 			}
 			if (jumpsLeft > 0 && jump) {
-				// Add a vertical force to the player.
+				//allow jumps to slow horizontal momentum
 				if (!Grounded) {
 					vel.x = 0;
 				}
@@ -88,19 +97,24 @@ namespace Leapman {
 				Grounded = false;
 				Animator.SetBool ("Ground", false);
 
-
 				vel.y = 0;
 				rb.AddForce (new Vector2 (0f, JumpForce));
 				jumpsLeft--;
-			}
-			if (Grounded && dash) {
+			} else if (blinkCount > 0 && blink) {
+				StartCoroutine (StartBlink (rb.position));
+				blinkCount--;
+			} else if (Grounded && dash && dashCount > 0) {
 				//dash has set velocity
 				vel.x = direction * DashVelocity;
 				vel.y = 0f;
+				dashCount--;
+				dashText.text = "Dashes: " + (int)dashCount;
 			}
 			rb.velocity = vel;
 			speedText.text = "Speed: " + (int)rb.velocity.x;
 		}
+
+		Vector2 newPosition;
 
 		private void checkFlip(float move) {
 			// If the input is moving the player right and the player is facing left...
