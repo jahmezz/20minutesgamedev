@@ -29,7 +29,7 @@ namespace Leapman {
 		private void FixedUpdate() {
 			float h = CrossPlatformInputManager.GetAxis ("Horizontal");
 			if (IsBlink) {
-				Character.Blink ();
+				Character.StartBlink (1);
 			} else {
 				Character.Move (h, IsJump, IsDash);
 			}

@@ -98,5 +98,6 @@
 'Assets/SampleScenes/Scripts/SlowMoButton.cs'
 'Assets/Scripts/Leapman2DUserControl.cs'
 'Assets/Scripts/LeapmanCharacter2D.cs'
+'Assets/Scripts/timedTrigger.cs'
 -r:'/Applications/Unity/Unity.app/Contents/Mono/lib/mono/unity/System.Runtime.Serialization.dll'
 -r:'/Applications/Unity/Unity.app/Contents/Mono/lib/mono/unity/System.Xml.Linq.dll'

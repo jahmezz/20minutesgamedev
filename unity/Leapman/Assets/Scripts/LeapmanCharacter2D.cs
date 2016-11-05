@@ -66,7 +66,7 @@ namespace Leapman {
 		float friction = 0.95f;
 		float airFriction = 0.98f;
 
-		public void Blink() {
+		public void StartBlink(int a) {
 			var MaxDistance = 5f;
 			//read inputs for 2 seconds
 		}
@@ -88,6 +88,8 @@ namespace Leapman {
 			} else {
 				vel.x *= airFriction;
 			}
+
+			var blink = false;
 			if (jumpsLeft > 0 && jump) {
 				//allow jumps to slow horizontal momentum
 				if (!Grounded) {
@@ -101,7 +103,6 @@ namespace Leapman {
 				rb.AddForce (new Vector2 (0f, JumpForce));
 				jumpsLeft--;
 			} else if (blinkCount > 0 && blink) {
-				StartCoroutine (StartBlink (rb.position));
 				blinkCount--;
 			} else if (Grounded && dash && dashCount > 0) {
 				//dash has set velocity
