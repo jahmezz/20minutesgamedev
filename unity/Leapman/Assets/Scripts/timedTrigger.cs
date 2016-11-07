@@ -16,7 +16,7 @@ public class timedTrigger : MonoBehaviour {
 	private void Update() {
 		if (countdown == 0 && Input.GetKeyDown ("space")) {
 			cross.enabled = true;
-			countdown = 2;
+			countdown = 3;
 			startPosition = cross.transform.position;
 		}
 		if (cross.enabled) {
@@ -33,18 +33,21 @@ public class timedTrigger : MonoBehaviour {
 	void readMoves() {
 		Vector2 position = cross.transform.position;
 		if (Input.GetKey ("up")) {
-			position.y += 1;
+			position.y += 2;
 		}
 		if (Input.GetKey ("down")) {
-			position.y -= 1;
+			position.y -= 2;
 		}
 		if (Input.GetKey ("left")) {
-			position.x -= 1;
+			position.x -= 2;
 		}
 		if (Input.GetKey ("right")) {
-			position.x += 1;
+			position.x += 2;
 		}
-		cross.transform.position = position;
+		Debug.Log (position.x + " " + position.y);
+		if (position.magnitude < 10) {
+			cross.transform.position = position;
+		}
 	}
 
 	void ShowCross() {
