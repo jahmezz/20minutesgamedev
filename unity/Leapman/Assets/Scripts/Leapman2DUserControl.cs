@@ -9,6 +9,8 @@ namespace Leapman {
 		private bool IsJump;
 		private bool IsDash;
 		private bool IsBlink;
+		private bool Blinking;
+		private bool WasBlink;
 
 		private void Awake() {
 			Character = GetComponent<LeapmanCharacter2D> ();
@@ -21,16 +23,20 @@ namespace Leapman {
 			if (!IsDash) {
 				IsDash = CrossPlatformInputManager.GetButtonDown ("Dash");
 			}
-			if (!IsBlink) {
-				IsBlink = CrossPlatformInputManager.GetButtonDown ("Blink");
-			}
+			IsBlink = CrossPlatformInputManager.GetButton ("Blink");
 		}
 
 		private void FixedUpdate() {
 			float h = CrossPlatformInputManager.GetAxis ("Horizontal");
 			if (IsBlink) {
-				Character.StartBlink (1);
+				Character.StartBlink (WasBlink);
+				WasBlink = true;
+			} else if (WasBlink) {
+				Debug.Log ("Ending blink");
+				Character.EndBlink ();
+				WasBlink = false;
 			} else {
+				
 				Character.Move (h, IsJump, IsDash);
 			}
 			IsJump = false;

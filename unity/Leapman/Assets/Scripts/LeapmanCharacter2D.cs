@@ -10,6 +10,8 @@ namespace Leapman {
 		[SerializeField] private float DashVelocity = 30f;
 		[SerializeField] private LayerMask GroundLayers;
 		[SerializeField] public Text speedText;
+		[SerializeField] public Image Circle;
+		[SerializeField] public Image Cross;
 		public Text dashText;
 		public int dashCount = 3;
 		private int blinkCount = 3;
@@ -32,6 +34,10 @@ namespace Leapman {
 		private int maxJumps = 3;
 		private int jumpsLeft;
 		private int direction;
+		private float PreBlinkX = 0;
+		private float PreBlinkY = 0;
+		private bool blinking = false;
+		Behaviour halo;
 
 		private void Awake() {
 			// Setting up references.
@@ -39,6 +45,10 @@ namespace Leapman {
 			CeilingCheck = transform.Find ("CeilingCheck");
 			Animator = GetComponent<Animator> ();
 			rb = GetComponent<Rigidbody2D> ();
+			halo = (Behaviour)GetComponent ("Halo");
+			halo.enabled = false;
+			Cross.enabled = false;
+			Circle.enabled = false;
 		}
 
 		private void FixedUpdate() {
@@ -46,11 +56,13 @@ namespace Leapman {
 
 			// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
 			// This can be done using layers instead but Sample Assets will not overwrite your project settings.
-			Collider2D[] colliders = Physics2D.OverlapCircleAll (GroundCheck.position, GroundRadius, GroundLayers);
-			for (int i = 0; i < colliders.Length; i++) {
-				if (colliders [i].gameObject != gameObject) {
-					Grounded = true;
-					resetCounts ();
+			if (!blinking) {
+				Collider2D[] colliders = Physics2D.OverlapCircleAll (GroundCheck.position, GroundRadius, GroundLayers);
+				for (int i = 0; i < colliders.Length; i++) {
+					if (colliders [i].gameObject != gameObject) {
+						Grounded = true;
+						resetCounts ();
+					}
 				}
 			}
 			Animator.SetBool ("Ground", Grounded);
@@ -66,9 +78,57 @@ namespace Leapman {
 		float friction = 0.95f;
 		float airFriction = 0.98f;
 
-		public void StartBlink(int a) {
+		public void StartBlink(bool hold) {
+			//effect
+			blinking = true;
+			Grounded = false;
+			Animator.SetBool ("Ground", false);
+			Cross.enabled = true;
+			halo.enabled = true;
+
+			//stop dude
+			rb.isKinematic = true;
+
+			//preserve speed
+			if (!hold) {
+				PreBlinkX = rb.velocity.x;
+				PreBlinkY = rb.velocity.y;
+				Cross.transform.position = rb.position;
+			} else {
+				//move x around
+				var newPosition = Cross.transform.position;
+
+				if (Input.GetKey ("up")) {
+					newPosition.y += 0.5f;
+				}
+				if (Input.GetKey ("down")) {
+					newPosition.y -= 0.5f;
+				}
+				if (Input.GetKey ("left")) {
+					newPosition.x -= 0.5f;
+				}
+				if (Input.GetKey ("right")) {
+					newPosition.x += 0.5f;
+				}
+
+				Cross.transform.position = newPosition;
+			}
+			//show and move cursor
 			var MaxDistance = 5f;
-			//read inputs for 2 seconds
+
+		}
+
+		public void EndBlink() {
+			blinking = false;
+			halo.enabled = false;
+
+			rb.MovePosition (Cross.transform.position);
+			rb.isKinematic = false;
+			rb.velocity = new Vector2 (PreBlinkX, PreBlinkY);
+			PreBlinkX = PreBlinkY = 0;
+
+			Circle.enabled = false;
+			Cross.enabled = false;
 		}
 
 		public void Move(float move, bool jump, bool dash) {
@@ -89,7 +149,6 @@ namespace Leapman {
 				vel.x *= airFriction;
 			}
 
-			var blink = false;
 			if (jumpsLeft > 0 && jump) {
 				//allow jumps to slow horizontal momentum
 				if (!Grounded) {
@@ -102,8 +161,6 @@ namespace Leapman {
 				vel.y = 0;
 				rb.AddForce (new Vector2 (0f, JumpForce));
 				jumpsLeft--;
-			} else if (blinkCount > 0 && blink) {
-				blinkCount--;
 			} else if (Grounded && dash && dashCount > 0) {
 				//dash has set velocity
 				vel.x = direction * DashVelocity;

@@ -54,6 +54,7 @@
      <Compile Include="Assets\SampleScenes\Scripts\ParticleSceneControls.cs" />
      <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
      <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
+     <Compile Include="Assets\Scripts\DrawCircle.cs" />
      <Compile Include="Assets\Scripts\Leapman2DUserControl.cs" />
      <Compile Include="Assets\Scripts\LeapmanCharacter2D.cs" />
      <Compile Include="Assets\Scripts\timedTrigger.cs" />
