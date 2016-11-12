@@ -78,22 +78,18 @@ namespace Leapman {
 		float friction = 0.95f;
 		float airFriction = 0.98f;
 
+		//show and move cursor
+		float MaxDistance = 5f;
+
 		public void StartBlink(bool hold) {
-			//effect
-			blinking = true;
-			Grounded = false;
-			Animator.SetBool ("Ground", false);
-			Cross.enabled = true;
-			halo.enabled = true;
-
-			//stop dude
-			rb.isKinematic = true;
-
 			//preserve speed
 			if (!hold) {
+				Debug.Log ("here");
 				PreBlinkX = rb.velocity.x;
 				PreBlinkY = rb.velocity.y;
 				Cross.transform.position = rb.position;
+				Circle.transform.position = rb.position;
+				Debug.Log (PreBlinkX + " " + PreBlinkY);
 			} else {
 				//move x around
 				var newPosition = Cross.transform.position;
@@ -111,17 +107,32 @@ namespace Leapman {
 					newPosition.x += 0.5f;
 				}
 
+				var distance = Math.Abs (Vector2.Distance (newPosition, rb.transform.position));
+				Debug.Log (distance);
+				if (distance > MaxDistance) {
+					newPosition = newPosition.normalized * MaxDistance;
+				}
+
 				Cross.transform.position = newPosition;
 			}
-			//show and move cursor
-			var MaxDistance = 5f;
 
+
+			//effect
+			blinking = true;
+			Grounded = false;
+			Animator.SetBool ("Ground", false);
+			Cross.enabled = true;
+			Circle.enabled = true;
+			halo.enabled = true;
+
+			//stop dude
+			rb.isKinematic = true;
 		}
 
 		public void EndBlink() {
 			blinking = false;
 			halo.enabled = false;
-
+			Debug.Log (PreBlinkX + " " + PreBlinkY);
 			rb.MovePosition (Cross.transform.position);
 			rb.isKinematic = false;
 			rb.velocity = new Vector2 (PreBlinkX, PreBlinkY);

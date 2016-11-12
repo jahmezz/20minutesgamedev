@@ -10,7 +10,7 @@ namespace Leapman {
 		private bool IsDash;
 		private bool IsBlink;
 		private bool Blinking;
-		private bool WasBlink;
+		private bool WasBlink = false;
 
 		private void Awake() {
 			Character = GetComponent<LeapmanCharacter2D> ();
@@ -32,7 +32,6 @@ namespace Leapman {
 				Character.StartBlink (WasBlink);
 				WasBlink = true;
 			} else if (WasBlink) {
-				Debug.Log ("Ending blink");
 				Character.EndBlink ();
 				WasBlink = false;
 			} else {
