@@ -39,6 +39,8 @@ namespace Leapman {
 		private bool blinking = false;
 		Behaviour halo;
 
+		public int fallBoundary = -20;
+
 		private void Awake() {
 			// Setting up references.
 			GroundCheck = transform.Find ("GroundCheck");
@@ -69,6 +71,10 @@ namespace Leapman {
 
 			// Set the vertical animation
 			Animator.SetFloat ("vSpeed", rb.velocity.y);
+
+			if (transform.position.y < fallBoundary) {
+				GameMaster.KillPlayer (this);
+			}
 		}
 
 		private void resetCounts() {
