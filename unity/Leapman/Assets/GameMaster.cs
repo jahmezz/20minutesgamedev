@@ -20,11 +20,10 @@ public class GameMaster : MonoBehaviour {
 
 	public static void KillPlayer(LeapmanCharacter2D player) {
 		Destroy (player.gameObject);
-		gm.StartCoroutine (gm.RespawnPlayer ());
+		gm.RespawnPlayer ();
 	}
 
-	public IEnumerator RespawnPlayer() {
-		yield return new WaitForSeconds (spawnDelay);
-		Instantiate (playerPrefab, spawnPoint.position, spawnPoint.rotation);
+	public void RespawnPlayer() {
+		GameObject clone = Instantiate (playerPrefab, spawnPoint.position, spawnPoint.rotation) as GameObject;
 	}
 }

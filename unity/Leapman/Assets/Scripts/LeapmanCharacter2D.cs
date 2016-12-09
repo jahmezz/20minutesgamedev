@@ -53,7 +53,21 @@ namespace Leapman {
 			Circle.enabled = false;
 		}
 
+		public void OnEnable() {
+			// Setting up references.
+			GroundCheck = transform.Find ("GroundCheck");
+			CeilingCheck = transform.Find ("CeilingCheck");
+			Animator = GetComponent<Animator> ();
+			rb = GetComponent<Rigidbody2D> ();
+			halo = (Behaviour)GetComponent ("Halo");
+			halo.enabled = false;
+			Cross.enabled = false;
+			Circle.enabled = false;
+		}
+
+
 		private void FixedUpdate() {
+			
 			Grounded = false;
 
 			// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
@@ -122,7 +136,6 @@ namespace Leapman {
 				Cross.transform.position = newPosition;
 			}
 
-
 			//effect
 			blinking = true;
 			Grounded = false;
@@ -186,7 +199,7 @@ namespace Leapman {
 				dashText.text = "Dashes: " + (int)dashCount;
 			}
 			rb.velocity = vel;
-			speedText.text = "Speed: " + (int)rb.velocity.x;
+			speedText.text = null;
 		}
 
 		Vector2 newPosition;

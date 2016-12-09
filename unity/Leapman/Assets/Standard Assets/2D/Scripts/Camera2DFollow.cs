@@ -14,6 +14,8 @@ namespace UnityStandardAssets._2D {
 		private Vector3 m_CurrentVelocity;
 		private Vector3 m_LookAheadPos;
 
+		private float nextTimeToSearch = 0;
+
 		// Use this for initialization
 		private void Start() {
 			m_LastTargetPosition = target.position;
@@ -25,6 +27,7 @@ namespace UnityStandardAssets._2D {
 		// Update is called once per frame
 		private void Update() {
 			if (target == null) {
+				FindPlayer ();
 				return;
 			}
 			// only update lookahead pos if accelerating or changed direction
@@ -44,6 +47,15 @@ namespace UnityStandardAssets._2D {
 			transform.position = newPos;
 
 			m_LastTargetPosition = target.position;
+		}
+
+		private void FindPlayer() {
+			if (nextTimeToSearch <= Time.time) {
+				GameObject searchResult = GameObject.FindGameObjectWithTag ("Player");
+				if (searchResult != null) {
+					target = searchResult.transform;
+				}
+			}
 		}
 	}
 }
