@@ -51,6 +51,7 @@ namespace Leapman {
 			halo.enabled = false;
 			Cross.enabled = false;
 			Circle.enabled = false;
+			direction = FacingRight ? 1 : -1;
 		}
 
 		public void OnEnable() {
@@ -65,6 +66,10 @@ namespace Leapman {
 			Circle.enabled = false;
 		}
 
+		private void OnTriggerEnter() {
+			Debug.Log ("Collided");
+			GameMaster.NextLevel ();
+		}
 
 		private void FixedUpdate() {
 			
@@ -86,8 +91,8 @@ namespace Leapman {
 			// Set the vertical animation
 			Animator.SetFloat ("vSpeed", rb.velocity.y);
 
-			if (transform.position.y < fallBoundary) {
-				GameMaster.KillPlayer (this);
+			if (!GameMaster.levelEnd && transform.position.y < fallBoundary) {
+				GameMaster.ResetLevel (this);
 			}
 		}
 
@@ -199,7 +204,7 @@ namespace Leapman {
 				dashText.text = "Dashes: " + (int)dashCount;
 			}
 			rb.velocity = vel;
-			speedText.text = null;
+			speedText.text = "" + direction;
 		}
 
 		Vector2 newPosition;

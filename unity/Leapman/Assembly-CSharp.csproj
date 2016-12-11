@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\Leapman2DUserControl.cs" />
      <Compile Include="Assets\Scripts\LeapmanCharacter2D.cs" />
      <Compile Include="Assets\Scripts\timedTrigger.cs" />
+     <Compile Include="Assets\Trigger.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
