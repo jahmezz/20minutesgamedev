@@ -5,11 +5,13 @@ public struct PlayerState {
 	public Vector3 position;
 	public int animState;
 	public bool direction;
+	public Vector3 velocity;
 
-	public PlayerState (Vector3 position, int animState, bool direction) {
+	public PlayerState (Vector3 position, int animState, bool direction, Vector3 velocity) {
 		this.position = position;
 		this.animState = animState;
 		this.direction = direction;
+		this.velocity = velocity;
 	}
 }
 
@@ -30,15 +32,13 @@ public class Recorder : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate() {
-		if (isRecording) {
-			states.Add (timeController.time, new PlayerState (transform.position, _animator.GetCurrentAnimatorStateInfo (0).shortNameHash, transform.localScale.x > 0));
-		}
+
 	}
 
 	void Update() {
 		if (Input.GetKeyDown (KeyCode.P)) {
 			isRecording = false;
-			player.SetRecording (states);
+
 			timeController.time = 0;
 		}
 	}
