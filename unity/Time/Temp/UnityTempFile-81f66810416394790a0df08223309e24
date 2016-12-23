@@ -87,6 +87,7 @@
 -define:UNITY_EDITOR_OSX
 -define:UNITY_TEAM_LICENSE
 -define:CROSS_PLATFORM_INPUT
+'Assets/MainMenu.cs'
 'Assets/Player.cs'
 'Assets/Recorder.cs'
 'Assets/TimeController.cs'
