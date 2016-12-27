@@ -10,11 +10,10 @@ namespace Leapman {
 		[SerializeField] private float DashVelocity = 30f;
 		[SerializeField] private LayerMask GroundLayers;
 		[SerializeField] public Text speedText;
+		[SerializeField] public Text jumpText;
 		[SerializeField] public Image Circle;
 		[SerializeField] public Image Cross;
-		public Text dashText;
-		public int dashCount = 3;
-		private int blinkCount = 3;
+		public bool canBlink = false;
 
 		private Transform GroundCheck;
 		// A position marking where to check if the player is grounded.
@@ -22,7 +21,6 @@ namespace Leapman {
 		// Radius of the overlap circle to determine if grounded
 		private bool Grounded;
 		// Whether or not the player is grounded.
-		private Transform CeilingCheck;
 		// A position marking where to check for ceilings
 		const float k_CeilingRadius = .01f;
 		// Radius of the overlap circle to determine if the player can stand up
@@ -31,12 +29,12 @@ namespace Leapman {
 		private Rigidbody2D rb;
 		private bool FacingRight = true;
 		// For determining which way the player is currently facing.
-		private int maxJumps = 3;
 		private int jumpsLeft;
 		private int direction;
 		private float PreBlinkX = 0;
 		private float PreBlinkY = 0;
 		private bool blinking = false;
+		private int maxGravity = -20;
 		Behaviour halo;
 
 		public int fallBoundary = -20;
@@ -44,7 +42,6 @@ namespace Leapman {
 		private void Awake() {
 			// Setting up references.
 			GroundCheck = transform.Find ("GroundCheck");
-			CeilingCheck = transform.Find ("CeilingCheck");
 			Animator = GetComponent<Animator> ();
 			rb = GetComponent<Rigidbody2D> ();
 			halo = (Behaviour)GetComponent ("Halo");
@@ -52,12 +49,14 @@ namespace Leapman {
 			Cross.enabled = false;
 			Circle.enabled = false;
 			direction = FacingRight ? 1 : -1;
+			jumpsLeft = 3;
+			jumpText.text = "Jumps left: " + jumpsLeft;
+			speedText.text = "Speed: " + rb.velocity;
 		}
 
 		public void OnEnable() {
 			// Setting up references.
 			GroundCheck = transform.Find ("GroundCheck");
-			CeilingCheck = transform.Find ("CeilingCheck");
 			Animator = GetComponent<Animator> ();
 			rb = GetComponent<Rigidbody2D> ();
 			halo = (Behaviour)GetComponent ("Halo");
@@ -72,9 +71,7 @@ namespace Leapman {
 		}
 
 		private void FixedUpdate() {
-			
 			Grounded = false;
-
 			// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
 			// This can be done using layers instead but Sample Assets will not overwrite your project settings.
 			if (!blinking) {
@@ -82,7 +79,6 @@ namespace Leapman {
 				for (int i = 0; i < colliders.Length; i++) {
 					if (colliders [i].gameObject != gameObject) {
 						Grounded = true;
-						resetCounts ();
 					}
 				}
 			}
@@ -96,17 +92,16 @@ namespace Leapman {
 			}
 		}
 
-		private void resetCounts() {
-			jumpsLeft = 2;
-		}
-
 		float friction = 0.95f;
 		float airFriction = 0.98f;
 
 		//show and move cursor
-		float MaxDistance = 5f;
+		float MaxDistance = 3f;
 
 		public void StartBlink(bool hold) {
+			if (!canBlink) {
+				return;
+			}
 			//preserve speed
 			if (!hold) {
 				Debug.Log ("here");
@@ -116,9 +111,15 @@ namespace Leapman {
 				Circle.transform.position = rb.position;
 				Debug.Log (PreBlinkX + " " + PreBlinkY);
 			} else {
-				//move x around
 				var newPosition = Cross.transform.position;
-
+				//idea:
+				//let cursor represent a point in a circle larger than the indicator, but always scale it back to the edge of the drawn circle.
+				//to do this, we:
+				//allow distance to go to a certain outer limit (5 units)
+				//calculate angle of our point from center
+				//if distance > max, we set distance of vector to max.
+				//move cross
+				//move vertically first
 				if (Input.GetKey ("up")) {
 					newPosition.y += 0.5f;
 				}
@@ -131,14 +132,19 @@ namespace Leapman {
 				if (Input.GetKey ("right")) {
 					newPosition.x += 0.5f;
 				}
+				var difference = newPosition - rb.transform.position;
+				var distanceSqr = difference.sqrMagnitude;
+				var radiusSqr = MaxDistance * MaxDistance;
+				Debug.Log (distanceSqr);
 
-				var distance = Math.Abs (Vector2.Distance (newPosition, rb.transform.position));
-				Debug.Log (distance);
-				if (distance > MaxDistance) {
-					newPosition = newPosition.normalized * MaxDistance;
+				//clamp vector to edge of circle
+				if (distanceSqr < radiusSqr) {
+					Cross.transform.position = newPosition;
+				} else {
+					//we are beyond edge of circle, clamp by getting normalized direction * radius
+					Cross.transform.position = rb.transform.position + (((difference.normalized * MaxDistance)));
 				}
 
-				Cross.transform.position = newPosition;
 			}
 
 			//effect
@@ -157,7 +163,7 @@ namespace Leapman {
 			blinking = false;
 			halo.enabled = false;
 			Debug.Log (PreBlinkX + " " + PreBlinkY);
-			rb.MovePosition (Cross.transform.position);
+			rb.position = Cross.transform.position;
 			rb.isKinematic = false;
 			rb.velocity = new Vector2 (PreBlinkX, PreBlinkY);
 			PreBlinkX = PreBlinkY = 0;
@@ -184,6 +190,7 @@ namespace Leapman {
 				vel.x *= airFriction;
 			}
 
+
 			if (jumpsLeft > 0 && jump) {
 				//allow jumps to slow horizontal momentum
 				if (!Grounded) {
@@ -196,18 +203,20 @@ namespace Leapman {
 				vel.y = 0;
 				rb.AddForce (new Vector2 (0f, JumpForce));
 				jumpsLeft--;
-			} else if (Grounded && dash && dashCount > 0) {
+				jumpText.text = "Jumps left: " + jumpsLeft;
+			} else if (Grounded && dash) {
 				//dash has set velocity
 				vel.x = direction * DashVelocity;
 				vel.y = 0f;
-				dashCount--;
-				dashText.text = "Dashes: " + (int)dashCount;
+			}
+
+			//you cannot fall faster than this
+			if (vel.y < maxGravity) {
+				vel.y = maxGravity;
 			}
 			rb.velocity = vel;
-			speedText.text = "" + direction;
+			speedText.text = "" + vel.magnitude;
 		}
-
-		Vector2 newPosition;
 
 		private void checkFlip(float move) {
 			// If the input is moving the player right and the player is facing left...
