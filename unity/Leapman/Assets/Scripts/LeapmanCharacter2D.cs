@@ -11,9 +11,10 @@ namespace Leapman {
 		[SerializeField] private LayerMask GroundLayers;
 		[SerializeField] public Text speedText;
 		[SerializeField] public Text jumpText;
+		[SerializeField] public Text resetText;
 		[SerializeField] public Image Circle;
 		[SerializeField] public Image Cross;
-		public bool canBlink = false;
+		public bool canBlink = true;
 
 		private Transform GroundCheck;
 		// A position marking where to check if the player is grounded.
@@ -34,7 +35,7 @@ namespace Leapman {
 		private float PreBlinkX = 0;
 		private float PreBlinkY = 0;
 		private bool blinking = false;
-		private int maxGravity = -20;
+		private int maxGravity = -15;
 		Behaviour halo;
 
 		public int fallBoundary = -20;
@@ -52,6 +53,7 @@ namespace Leapman {
 			jumpsLeft = 3;
 			jumpText.text = "Jumps left: " + jumpsLeft;
 			speedText.text = "Speed: " + rb.velocity;
+			resetText.text = "'Esc' for controls, 'R' to Reset Level";
 		}
 
 		public void OnEnable() {
@@ -65,9 +67,15 @@ namespace Leapman {
 			Circle.enabled = false;
 		}
 
-		private void OnTriggerEnter() {
-			Debug.Log ("Collided");
-			GameMaster.NextLevel ();
+		private void OnTriggerEnter(Collider other) {
+			if (other.tag.Equals ("Goal")) {
+				GameMaster.NextLevel ();
+			} else if (other.tag.Equals ("Powerup")) {
+				Debug.Log ("picked up");
+				canBlink = true;
+				Destroy (other.gameObject);
+			}
+
 		}
 
 		private void FixedUpdate() {
@@ -99,17 +107,12 @@ namespace Leapman {
 		float MaxDistance = 3f;
 
 		public void StartBlink(bool hold) {
-			if (!canBlink) {
-				return;
-			}
 			//preserve speed
 			if (!hold) {
-				Debug.Log ("here");
 				PreBlinkX = rb.velocity.x;
 				PreBlinkY = rb.velocity.y;
 				Cross.transform.position = rb.position;
 				Circle.transform.position = rb.position;
-				Debug.Log (PreBlinkX + " " + PreBlinkY);
 			} else {
 				var newPosition = Cross.transform.position;
 				//idea:
@@ -135,7 +138,6 @@ namespace Leapman {
 				var difference = newPosition - rb.transform.position;
 				var distanceSqr = difference.sqrMagnitude;
 				var radiusSqr = MaxDistance * MaxDistance;
-				Debug.Log (distanceSqr);
 
 				//clamp vector to edge of circle
 				if (distanceSqr < radiusSqr) {
@@ -150,7 +152,6 @@ namespace Leapman {
 			//effect
 			blinking = true;
 			Grounded = false;
-			Animator.SetBool ("Ground", false);
 			Cross.enabled = true;
 			Circle.enabled = true;
 			halo.enabled = true;
@@ -162,7 +163,6 @@ namespace Leapman {
 		public void EndBlink() {
 			blinking = false;
 			halo.enabled = false;
-			Debug.Log (PreBlinkX + " " + PreBlinkY);
 			rb.position = Cross.transform.position;
 			rb.isKinematic = false;
 			rb.velocity = new Vector2 (PreBlinkX, PreBlinkY);

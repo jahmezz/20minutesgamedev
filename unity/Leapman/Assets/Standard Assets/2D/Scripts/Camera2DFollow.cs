@@ -15,6 +15,7 @@ namespace UnityStandardAssets._2D {
 		private Vector3 m_LookAheadPos;
 
 		private float nextTimeToSearch = 0;
+		private int minY = -15;
 
 		// Use this for initialization
 		private void Start() {
@@ -39,6 +40,10 @@ namespace UnityStandardAssets._2D {
 				m_LookAheadPos = lookAheadFactor * Vector3.right * Mathf.Sign (xMoveDelta);
 			} else {
 				m_LookAheadPos = Vector3.MoveTowards (m_LookAheadPos, Vector3.zero, Time.deltaTime * lookAheadReturnSpeed);
+			}
+
+			if (m_LookAheadPos.y < minY) {
+				m_LookAheadPos.y = minY;
 			}
 
 			Vector3 aheadTargetPos = target.position + m_LookAheadPos + Vector3.forward * m_OffsetZ;

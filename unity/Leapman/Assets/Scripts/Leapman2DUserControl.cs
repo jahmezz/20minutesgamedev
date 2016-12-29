@@ -9,7 +9,6 @@ namespace Leapman {
 		private bool IsJump;
 		private bool IsDash;
 		private bool IsBlink;
-		private bool Blinking;
 		private bool WasBlink = false;
 
 		private void Awake() {
