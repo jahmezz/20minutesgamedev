@@ -2,11 +2,12 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/LeapmanCharacter2D.cs">
     <Files>
-      <File FileName="Assets/Scripts/Leapman2DUserControl.cs" Line="29" Column="27" />
-      <File FileName="Assets/Scripts/LeapmanCharacter2D.cs" Line="31" Column="35" />
-      <File FileName="Assets/Standard Assets/2D/Scripts/Camera2DFollow.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Leapman2DUserControl.cs" Line="18" Column="26" />
+      <File FileName="Assets/Scripts/LeapmanCharacter2D.cs" Line="56" Column="62" />
+      <File FileName="Assets/Standard Assets/2D/Scripts/Camera2DFollow.cs" Line="46" Column="29" />
       <File FileName="Assets/GameMaster.cs" Line="41" Column="20" />
-      <File FileName="Assets/Trigger.cs" Line="1" Column="1" />
+      <File FileName="Assets/Trigger.cs" Line="7" Column="2" />
+      <File FileName="Assets/Crate.cs" Line="17" Column="52" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

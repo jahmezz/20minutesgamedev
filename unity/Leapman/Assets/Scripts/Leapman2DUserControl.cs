@@ -16,6 +16,9 @@ namespace Leapman {
 		}
 
 		private void Update() {
+			if (CrossPlatformInputManager.GetButtonDown ("Reset")) {
+				GameMaster.ResetLevel (Character);
+			}
 			if (!IsJump) {
 				IsJump = CrossPlatformInputManager.GetButtonDown ("Jump");
 			}

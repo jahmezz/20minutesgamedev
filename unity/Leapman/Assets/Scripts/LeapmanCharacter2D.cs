@@ -12,9 +12,10 @@ namespace Leapman {
 		[SerializeField] public Text speedText;
 		[SerializeField] public Text jumpText;
 		[SerializeField] public Text resetText;
+		[SerializeField] public Text notifyText;
 		[SerializeField] public Image Circle;
 		[SerializeField] public Image Cross;
-		public bool canBlink = true;
+		public bool canBlink = false;
 
 		private Transform GroundCheck;
 		// A position marking where to check if the player is grounded.
@@ -67,15 +68,27 @@ namespace Leapman {
 			Circle.enabled = false;
 		}
 
-		private void OnTriggerEnter(Collider other) {
-			if (other.tag.Equals ("Goal")) {
+		void OnCollisionEnter2D(Collision2D other) {
+			if (other.gameObject.CompareTag ("Goal")) {
 				GameMaster.NextLevel ();
-			} else if (other.tag.Equals ("Powerup")) {
-				Debug.Log ("picked up");
-				canBlink = true;
-				Destroy (other.gameObject);
 			}
+		}
 
+		private void OnTriggerEnter2D(Collider2D other) {
+			Debug.Log ("entered");
+			if (other.gameObject.CompareTag ("Powerup")) {
+				Debug.Log ("picked up");
+				StartCoroutine ("notifyBlink");
+				canBlink = true;
+				other.gameObject.SetActive (false);
+			}
+		}
+
+		private IEnumerator notifyBlink() {
+			notifyText.text = "You learned 'Blink'! Press 'D' to try it out.";
+			notifyText.enabled = true;
+			yield return new WaitForSeconds (3);
+			notifyText.enabled = false;
 		}
 
 		private void FixedUpdate() {
@@ -215,7 +228,7 @@ namespace Leapman {
 				vel.y = maxGravity;
 			}
 			rb.velocity = vel;
-			speedText.text = "" + vel.magnitude;
+			speedText.text = "Speed: " + (int)vel.magnitude;
 		}
 
 		private void checkFlip(float move) {
