@@ -23,7 +23,7 @@ public class GameMaster : MonoBehaviour {
 	public Transform playerPrefab;
 	public Transform spawnPoint;
 
-	public static void ResetLevel(LeapmanCharacter2D player) {
+	public static void ResetLevel() {
 		int scene = SceneManager.GetActiveScene ().buildIndex;
 		SceneManager.LoadScene (scene, LoadSceneMode.Single);
 	}

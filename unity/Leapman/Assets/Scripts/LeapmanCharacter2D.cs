@@ -13,8 +13,10 @@ namespace Leapman {
 		[SerializeField] public Text jumpText;
 		[SerializeField] public Text resetText;
 		[SerializeField] public Text notifyText;
+		public Text optionsText;
 		[SerializeField] public Image Circle;
 		[SerializeField] public Image Cross;
+		public Camera camera;
 		public bool canBlink = false;
 
 		private Transform GroundCheck;
@@ -84,6 +86,11 @@ namespace Leapman {
 			}
 		}
 
+		public void TogglePaused() {
+			rb.isKinematic = !rb.isKinematic;
+			optionsText.enabled = optionsText.isActiveAndEnabled;
+		}
+
 		private IEnumerator notifyBlink() {
 			notifyText.text = "You learned 'Blink'! Press 'D' to try it out.";
 			notifyText.enabled = true;
@@ -109,7 +116,7 @@ namespace Leapman {
 			Animator.SetFloat ("vSpeed", rb.velocity.y);
 
 			if (!GameMaster.levelEnd && transform.position.y < fallBoundary) {
-				GameMaster.ResetLevel (this);
+				GameMaster.ResetLevel ();
 			}
 		}
 
@@ -185,7 +192,19 @@ namespace Leapman {
 			Cross.enabled = false;
 		}
 
-		public void Move(float move, bool jump, bool dash) {
+		int maxCameraY = 10;
+
+		public void Control(float look, float move, bool jump, bool dash) {
+			//move camera
+			if (Grounded && look != 0 && move == 0) {
+				var cameraPosition = camera.gameObject.transform.position;
+				cameraPosition.y += look;
+				if (Math.Abs (cameraPosition.y) > maxCameraY) {
+					cameraPosition.y = cameraPosition.y > 0 ? maxCameraY : -maxCameraY;
+				}
+				camera.gameObject.transform.position = cameraPosition;
+			}
+
 			// The Speed animator parameter is set to the absolute value of the horizontal input.
 			Animator.SetFloat ("Speed", Mathf.Abs (move));
 

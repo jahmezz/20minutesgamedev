@@ -16,8 +16,11 @@ namespace Leapman {
 		}
 
 		private void Update() {
+			if (Input.GetKeyDown (KeyCode.Escape)) {
+				Character.TogglePaused ();
+			}
 			if (CrossPlatformInputManager.GetButtonDown ("Reset")) {
-				GameMaster.ResetLevel (Character);
+				GameMaster.ResetLevel ();
 			}
 			if (!IsJump) {
 				IsJump = CrossPlatformInputManager.GetButtonDown ("Jump");
@@ -29,6 +32,7 @@ namespace Leapman {
 		}
 
 		private void FixedUpdate() {
+			float v = CrossPlatformInputManager.GetAxis ("Vertical");
 			float h = CrossPlatformInputManager.GetAxis ("Horizontal");
 			if (Character.canBlink && IsBlink) {
 				Character.StartBlink (WasBlink);
@@ -38,7 +42,7 @@ namespace Leapman {
 				WasBlink = false;
 			} else {
 				
-				Character.Move (h, IsJump, IsDash);
+				Character.Control (v, h, IsJump, IsDash);
 			}
 			IsJump = false;
 			IsDash = false;
