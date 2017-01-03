@@ -77,9 +77,7 @@ namespace Leapman {
 		}
 
 		private void OnTriggerEnter2D(Collider2D other) {
-			Debug.Log ("entered");
 			if (other.gameObject.CompareTag ("Powerup")) {
-				Debug.Log ("picked up");
 				StartCoroutine ("notifyBlink");
 				canBlink = true;
 				other.gameObject.SetActive (false);
@@ -88,7 +86,7 @@ namespace Leapman {
 
 		public void TogglePaused() {
 			rb.isKinematic = !rb.isKinematic;
-			optionsText.enabled = optionsText.isActiveAndEnabled;
+			optionsText.enabled = !optionsText.isActiveAndEnabled;
 		}
 
 		private IEnumerator notifyBlink() {
