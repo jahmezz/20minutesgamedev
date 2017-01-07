@@ -1,6 +1,7 @@
 [
 null,
-{"id":1,"expanded":false,"name":"MAP001","order":3,"parentId":3,"scrollX":1782.5454545454545,"scrollY":996},
-{"id":2,"expanded":false,"name":"Intro","order":1,"parentId":0,"scrollX":1782.5454545454545,"scrollY":996},
-{"id":3,"expanded":false,"name":"World","order":2,"parentId":0,"scrollX":1782.5454545454545,"scrollY":996}
+{"id":1,"expanded":false,"name":"MAP001","order":4,"parentId":3,"scrollX":1782.5454545454545,"scrollY":996},
+{"id":2,"expanded":true,"name":"Intro","order":1,"parentId":0,"scrollX":1782.5454545454545,"scrollY":996},
+{"id":3,"expanded":false,"name":"World","order":3,"parentId":0,"scrollX":1782.5454545454545,"scrollY":996},
+{"id":4,"expanded":false,"name":"Story1","order":2,"parentId":2,"scrollX":1782.5454545454545,"scrollY":996}
 ]
