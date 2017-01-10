@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a88ea95effe8f427aa47c7c90dbce587
-timeCreated: 1483945417
+timeCreated: 1484029591
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -20,115 +20,115 @@ TextureImporter:
     21300026: walk_right_6
     21300028: walk_right_7
     21300030: walk_right_8
-    21300032: link_16
-    21300034: link_17
-    21300036: link_18
-    21300038: link_19
-    21300040: link_20
-    21300042: link_21
-    21300044: link_22
-    21300046: link_23
-    21300048: link_24
-    21300050: link_25
-    21300052: link_26
-    21300054: link_27
-    21300056: link_28
-    21300058: link_29
-    21300060: link_30
-    21300062: link_31
-    21300064: link_32
-    21300066: link_33
-    21300068: link_34
-    21300070: link_35
-    21300072: link_36
-    21300074: link_37
-    21300076: link_38
-    21300078: link_39
-    21300080: link_40
-    21300082: link_41
-    21300084: link_42
-    21300086: link_43
-    21300088: link_44
-    21300090: link_45
-    21300092: link_46
-    21300094: link_47
-    21300096: link_48
-    21300098: link_49
-    21300100: link_50
-    21300102: link_51
-    21300104: link_52
-    21300106: link_53
-    21300108: link_54
-    21300110: link_55
-    21300112: link_56
-    21300114: link_57
-    21300116: link_58
-    21300118: link_59
-    21300120: link_60
-    21300122: link_61
-    21300124: link_62
-    21300126: link_63
-    21300128: link_64
-    21300130: link_65
-    21300132: link_66
-    21300134: link_67
-    21300136: link_68
-    21300138: link_69
-    21300140: link_70
-    21300142: link_71
-    21300144: link_72
-    21300146: link_73
-    21300148: link_74
-    21300150: link_75
-    21300152: link_76
-    21300154: link_77
-    21300156: link_78
-    21300158: link_79
-    21300160: link_80
+    21300032: walk_up_1
+    21300034: walk_up_2
+    21300036: walk_up_3
+    21300038: walk_up_4
+    21300040: walk_up_5
+    21300042: walk_up_6
+    21300044: walk_up_7
+    21300046: walk_up_8
+    21300048: walk_down_1
+    21300050: walk_down_2
+    21300052: walk_down_3
+    21300054: walk_down_4
+    21300056: walk_down_5
+    21300058: walk_down_6
+    21300060: walk_down_7
+    21300062: walk_down_8
+    21300064: shield_left_1
+    21300066: shield_left_2
+    21300068: shield_left_3
+    21300070: shield_left_4
+    21300072: shield_left_5
+    21300074: shield_left_6
+    21300076: shield_left_7
+    21300078: shield_left_8
+    21300080: shield_right_1
+    21300082: shield_right_2
+    21300084: shield_right_3
+    21300086: shield_right_4
+    21300088: shield_right_5
+    21300090: shield_right_6
+    21300092: shield_right_7
+    21300094: shield_right_8
+    21300096: shield_up_1
+    21300098: shield_up_2
+    21300100: shield_up_3
+    21300102: shield_up_4
+    21300104: shield_up_5
+    21300106: shield_up_6
+    21300108: shield_up_7
+    21300110: shield_up_8
+    21300112: shield_down_1
+    21300114: shield_down_2
+    21300116: shield_down_3
+    21300118: shield_down_4
+    21300120: shield_down_5
+    21300122: shield_down_6
+    21300124: shield_down_7
+    21300126: shield_down_8
+    21300128: green_pull_up_1
+    21300130: green_pull_up_2
+    21300132: green_pull_up_3
+    21300134: green_pull_down_1
+    21300136: green_pull_down_2
+    21300138: green_pull_down_3
+    21300140: green_pull_right_1
+    21300142: green_pull_right_2
+    21300144: green_pull_right_3
+    21300146: green_pull_left_1
+    21300148: green_pull_left_2
+    21300150: green_pull_left_3
+    21300152: red_pull_up_1
+    21300154: red_pull_up_2
+    21300156: red_pull_up_3
+    21300158: red_pull_down_1
+    21300160: red_pull_down_2
     21300162: link_81
-    21300164: link_82
-    21300166: link_83
-    21300168: link_84
+    21300164: red_pull_right_1
+    21300166: red_pull_right_2
+    21300168: red_pull_right_3
     21300170: link_85
-    21300172: link_86
-    21300174: link_87
+    21300172: red_pull_left_1
+    21300174: red_pull_left_2
     21300176: link_88
-    21300178: link_89
+    21300178: red_pull_left_3
     21300180: idle_down
     21300182: idle_right
     21300184: idle_up
     21300186: idle_left
-    21300188: link_94
-    21300190: link_95
-    21300192: link_96
-    21300194: link_97
-    21300196: link_98
-    21300198: link_99
-    21300200: link_100
-    21300202: link_101
-    21300204: link_102
-    21300206: link_103
-    21300208: link_104
-    21300210: link_105
-    21300212: link_106
-    21300214: link_107
-    21300216: link_108
-    21300218: link_109
-    21300220: link_110
-    21300222: link_111
-    21300224: link_112
-    21300226: link_113
-    21300228: link_114
-    21300230: link_115
-    21300232: link_116
-    21300234: link_117
-    21300236: link_118
-    21300238: link_119
-    21300240: link_120
-    21300242: link_121
-    21300244: link_122
-    21300246: link_123
-    21300248: link_124
+    21300188: buckler_idle_down
+    21300190: buckler_idle_right
+    21300192: buckler_idle_up
+    21300194: buckler_idle_left
+    21300196: shield_idle_down
+    21300198: shield_idle_right
+    21300200: shield_idle_up
+    21300202: shield_idle_left
+    21300204: attack_down_1
+    21300206: attack_down_2
+    21300208: attack_down_3
+    21300210: attack_down_4
+    21300212: attack_down_5
+    21300214: attack_up_1
+    21300216: attack_up_2
+    21300218: attack_up_3
+    21300220: attack_up_4
+    21300222: attack_up_5
+    21300224: attack_up_6
+    21300226: attack_left_1
+    21300228: attack_left_2
+    21300230: attack_left_3
+    21300232: attack_left_4
+    21300234: attack_left_5
+    21300236: attack_left_6
+    21300238: attack_right_1
+    21300240: attack_right_2
+    21300242: attack_right_3
+    21300244: attack_right_4
+    21300246: attack_right_5
+    21300248: attack_right_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -386,7 +386,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_16
+      name: walk_up_1
       rect:
         serializedVersion: 2
         x: 14
@@ -399,7 +399,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_17
+      name: walk_up_2
       rect:
         serializedVersion: 2
         x: 36
@@ -412,7 +412,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_18
+      name: walk_up_3
       rect:
         serializedVersion: 2
         x: 60
@@ -425,7 +425,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_19
+      name: walk_up_4
       rect:
         serializedVersion: 2
         x: 84
@@ -438,7 +438,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_20
+      name: walk_up_5
       rect:
         serializedVersion: 2
         x: 108
@@ -451,7 +451,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_21
+      name: walk_up_6
       rect:
         serializedVersion: 2
         x: 130
@@ -464,7 +464,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_22
+      name: walk_up_7
       rect:
         serializedVersion: 2
         x: 152
@@ -477,7 +477,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_23
+      name: walk_up_8
       rect:
         serializedVersion: 2
         x: 175
@@ -490,7 +490,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_24
+      name: walk_down_1
       rect:
         serializedVersion: 2
         x: 205
@@ -503,7 +503,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_25
+      name: walk_down_2
       rect:
         serializedVersion: 2
         x: 227
@@ -516,7 +516,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_26
+      name: walk_down_3
       rect:
         serializedVersion: 2
         x: 248
@@ -529,7 +529,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_27
+      name: walk_down_4
       rect:
         serializedVersion: 2
         x: 270
@@ -542,7 +542,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_28
+      name: walk_down_5
       rect:
         serializedVersion: 2
         x: 293
@@ -555,7 +555,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_29
+      name: walk_down_6
       rect:
         serializedVersion: 2
         x: 315
@@ -568,7 +568,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_30
+      name: walk_down_7
       rect:
         serializedVersion: 2
         x: 337
@@ -581,7 +581,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_31
+      name: walk_down_8
       rect:
         serializedVersion: 2
         x: 357
@@ -594,7 +594,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_32
+      name: shield_left_1
       rect:
         serializedVersion: 2
         x: 11
@@ -607,7 +607,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_33
+      name: shield_left_2
       rect:
         serializedVersion: 2
         x: 34
@@ -620,7 +620,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_34
+      name: shield_left_3
       rect:
         serializedVersion: 2
         x: 57
@@ -633,7 +633,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_35
+      name: shield_left_4
       rect:
         serializedVersion: 2
         x: 80
@@ -646,7 +646,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_36
+      name: shield_left_5
       rect:
         serializedVersion: 2
         x: 103
@@ -659,7 +659,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_37
+      name: shield_left_6
       rect:
         serializedVersion: 2
         x: 126
@@ -672,7 +672,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_38
+      name: shield_left_7
       rect:
         serializedVersion: 2
         x: 149
@@ -685,7 +685,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_39
+      name: shield_left_8
       rect:
         serializedVersion: 2
         x: 172
@@ -698,7 +698,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_40
+      name: shield_right_1
       rect:
         serializedVersion: 2
         x: 196
@@ -711,7 +711,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_41
+      name: shield_right_2
       rect:
         serializedVersion: 2
         x: 219
@@ -724,7 +724,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_42
+      name: shield_right_3
       rect:
         serializedVersion: 2
         x: 243
@@ -737,7 +737,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_43
+      name: shield_right_4
       rect:
         serializedVersion: 2
         x: 265
@@ -750,7 +750,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_44
+      name: shield_right_5
       rect:
         serializedVersion: 2
         x: 288
@@ -763,7 +763,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_45
+      name: shield_right_6
       rect:
         serializedVersion: 2
         x: 311
@@ -776,7 +776,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_46
+      name: shield_right_7
       rect:
         serializedVersion: 2
         x: 335
@@ -789,7 +789,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_47
+      name: shield_right_8
       rect:
         serializedVersion: 2
         x: 358
@@ -802,7 +802,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_48
+      name: shield_up_1
       rect:
         serializedVersion: 2
         x: 9
@@ -815,7 +815,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_49
+      name: shield_up_2
       rect:
         serializedVersion: 2
         x: 33
@@ -828,7 +828,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_50
+      name: shield_up_3
       rect:
         serializedVersion: 2
         x: 57
@@ -841,7 +841,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_51
+      name: shield_up_4
       rect:
         serializedVersion: 2
         x: 81
@@ -854,7 +854,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_52
+      name: shield_up_5
       rect:
         serializedVersion: 2
         x: 102
@@ -867,7 +867,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_53
+      name: shield_up_6
       rect:
         serializedVersion: 2
         x: 126
@@ -880,7 +880,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_54
+      name: shield_up_7
       rect:
         serializedVersion: 2
         x: 150
@@ -893,7 +893,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_55
+      name: shield_up_8
       rect:
         serializedVersion: 2
         x: 172
@@ -906,7 +906,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_56
+      name: shield_down_1
       rect:
         serializedVersion: 2
         x: 198
@@ -919,7 +919,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_57
+      name: shield_down_2
       rect:
         serializedVersion: 2
         x: 221
@@ -932,7 +932,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_58
+      name: shield_down_3
       rect:
         serializedVersion: 2
         x: 244
@@ -945,7 +945,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_59
+      name: shield_down_4
       rect:
         serializedVersion: 2
         x: 267
@@ -958,7 +958,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_60
+      name: shield_down_5
       rect:
         serializedVersion: 2
         x: 290
@@ -971,7 +971,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_61
+      name: shield_down_6
       rect:
         serializedVersion: 2
         x: 312
@@ -984,7 +984,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_62
+      name: shield_down_7
       rect:
         serializedVersion: 2
         x: 335
@@ -997,7 +997,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_63
+      name: shield_down_8
       rect:
         serializedVersion: 2
         x: 358
@@ -1010,46 +1010,46 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_64
+      name: green_pull_up_1
       rect:
         serializedVersion: 2
-        x: 28
+        x: 24
         y: 170
-        width: 16
+        width: 23
         height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.52430445, y: 0.53493804}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_65
+      name: green_pull_up_2
       rect:
         serializedVersion: 2
-        x: 47
+        x: 46
         y: 170
-        width: 24
+        width: 26
         height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.439239, y: 0.53493804}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_66
+      name: green_pull_up_3
       rect:
         serializedVersion: 2
-        x: 73
+        x: 74
         y: 170
         width: 26
         height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5107501, y: 0.50665504}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_67
+      name: green_pull_down_1
       rect:
         serializedVersion: 2
         x: 118
@@ -1062,7 +1062,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_68
+      name: green_pull_down_2
       rect:
         serializedVersion: 2
         x: 139
@@ -1075,7 +1075,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_69
+      name: green_pull_down_3
       rect:
         serializedVersion: 2
         x: 165
@@ -1088,7 +1088,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_70
+      name: green_pull_right_1
       rect:
         serializedVersion: 2
         x: 205
@@ -1101,7 +1101,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_71
+      name: green_pull_right_2
       rect:
         serializedVersion: 2
         x: 228
@@ -1114,7 +1114,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_72
+      name: green_pull_right_3
       rect:
         serializedVersion: 2
         x: 253
@@ -1127,7 +1127,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_73
+      name: green_pull_left_1
       rect:
         serializedVersion: 2
         x: 285
@@ -1140,7 +1140,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_74
+      name: green_pull_left_2
       rect:
         serializedVersion: 2
         x: 306
@@ -1153,7 +1153,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_75
+      name: green_pull_left_3
       rect:
         serializedVersion: 2
         x: 331
@@ -1166,46 +1166,46 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_76
+      name: red_pull_up_1
       rect:
         serializedVersion: 2
-        x: 26
+        x: 22
         y: 138
-        width: 16
+        width: 24
         height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.43979535, y: 0.622818}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_77
+      name: red_pull_up_2
       rect:
         serializedVersion: 2
         x: 47
         y: 138
         width: 24
         height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.43979517, y: 0.622818}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_78
+      name: red_pull_up_3
       rect:
         serializedVersion: 2
-        x: 74
+        x: 73
         y: 138
-        width: 29
+        width: 30
         height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.45334217, y: 0.5928875}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_79
+      name: red_pull_down_1
       rect:
         serializedVersion: 2
         x: 115
@@ -1218,12 +1218,12 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_80
+      name: red_pull_down_2
       rect:
         serializedVersion: 2
-        x: 137
+        x: 136
         y: 139
-        width: 34
+        width: 27
         height: 20
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1234,17 +1234,17 @@ TextureImporter:
       name: link_81
       rect:
         serializedVersion: 2
-        x: 172
+        x: 167
         y: 140
-        width: 23
+        width: 28
         height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.4706955, y: 0.4794876}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_82
+      name: red_pull_right_1
       rect:
         serializedVersion: 2
         x: 205
@@ -1257,7 +1257,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_83
+      name: red_pull_right_2
       rect:
         serializedVersion: 2
         x: 227
@@ -1270,7 +1270,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_84
+      name: red_pull_right_3
       rect:
         serializedVersion: 2
         x: 252
@@ -1283,20 +1283,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_85
-      rect:
-        serializedVersion: 2
-        x: 268
-        y: 142
-        width: 4
-        height: 4
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: link_86
+      name: red_pull_left_1
       rect:
         serializedVersion: 2
         x: 289
@@ -1309,7 +1296,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_87
+      name: red_pull_left_2
       rect:
         serializedVersion: 2
         x: 311
@@ -1322,20 +1309,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_88
-      rect:
-        serializedVersion: 2
-        x: 335
-        y: 141
-        width: 4
-        height: 4
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: link_89
+      name: red_pull_left_3
       rect:
         serializedVersion: 2
         x: 336
@@ -1400,7 +1374,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_94
+      name: buckler_idle_down
       rect:
         serializedVersion: 2
         x: 153
@@ -1413,7 +1387,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_95
+      name: buckler_idle_right
       rect:
         serializedVersion: 2
         x: 173
@@ -1426,7 +1400,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_96
+      name: buckler_idle_up
       rect:
         serializedVersion: 2
         x: 201
@@ -1439,7 +1413,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_97
+      name: buckler_idle_left
       rect:
         serializedVersion: 2
         x: 226
@@ -1452,7 +1426,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_98
+      name: shield_idle_down
       rect:
         serializedVersion: 2
         x: 250
@@ -1465,7 +1439,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_99
+      name: shield_idle_right
       rect:
         serializedVersion: 2
         x: 273
@@ -1478,7 +1452,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_100
+      name: shield_idle_up
       rect:
         serializedVersion: 2
         x: 298
@@ -1491,7 +1465,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_101
+      name: shield_idle_left
       rect:
         serializedVersion: 2
         x: 324
@@ -1504,7 +1478,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_102
+      name: attack_down_1
       rect:
         serializedVersion: 2
         x: 19
@@ -1517,7 +1491,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_103
+      name: attack_down_2
       rect:
         serializedVersion: 2
         x: 47
@@ -1530,7 +1504,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_104
+      name: attack_down_3
       rect:
         serializedVersion: 2
         x: 75
@@ -1543,7 +1517,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_105
+      name: attack_down_4
       rect:
         serializedVersion: 2
         x: 105
@@ -1556,7 +1530,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_106
+      name: attack_down_5
       rect:
         serializedVersion: 2
         x: 136
@@ -1569,7 +1543,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_107
+      name: attack_up_1
       rect:
         serializedVersion: 2
         x: 182
@@ -1582,7 +1556,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_108
+      name: attack_up_2
       rect:
         serializedVersion: 2
         x: 213
@@ -1595,7 +1569,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_109
+      name: attack_up_3
       rect:
         serializedVersion: 2
         x: 243
@@ -1608,7 +1582,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_110
+      name: attack_up_4
       rect:
         serializedVersion: 2
         x: 278
@@ -1621,7 +1595,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_111
+      name: attack_up_5
       rect:
         serializedVersion: 2
         x: 309
@@ -1634,7 +1608,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_112
+      name: attack_up_6
       rect:
         serializedVersion: 2
         x: 346
@@ -1647,7 +1621,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_113
+      name: attack_left_1
       rect:
         serializedVersion: 2
         x: 7
@@ -1660,7 +1634,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_114
+      name: attack_left_2
       rect:
         serializedVersion: 2
         x: 30
@@ -1673,7 +1647,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_115
+      name: attack_left_3
       rect:
         serializedVersion: 2
         x: 58
@@ -1686,7 +1660,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_116
+      name: attack_left_4
       rect:
         serializedVersion: 2
         x: 97
@@ -1699,7 +1673,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_117
+      name: attack_left_5
       rect:
         serializedVersion: 2
         x: 140
@@ -1712,7 +1686,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_118
+      name: attack_left_6
       rect:
         serializedVersion: 2
         x: 183
@@ -1725,7 +1699,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_119
+      name: attack_right_1
       rect:
         serializedVersion: 2
         x: 219
@@ -1738,7 +1712,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_120
+      name: attack_right_2
       rect:
         serializedVersion: 2
         x: 247
@@ -1751,7 +1725,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_121
+      name: attack_right_3
       rect:
         serializedVersion: 2
         x: 279
@@ -1764,7 +1738,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_122
+      name: attack_right_4
       rect:
         serializedVersion: 2
         x: 308
@@ -1777,7 +1751,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_123
+      name: attack_right_5
       rect:
         serializedVersion: 2
         x: 340
@@ -1790,7 +1764,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: link_124
+      name: attack_right_6
       rect:
         serializedVersion: 2
         x: 374
