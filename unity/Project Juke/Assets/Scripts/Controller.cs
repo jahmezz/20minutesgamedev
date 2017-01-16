@@ -13,11 +13,10 @@ public class Controller : MonoBehaviour {
 	/// <summary>
 	/// The force applied to the player.
 	/// </summary>
-	[SerializeField]
 	private Vector2 deltaForce;
 	private Vector2 lastDirection;
 
-	public float speed = 2;
+	public float speed = 2f;
 
 	private bool isMoving;
 
@@ -47,14 +46,20 @@ public class Controller : MonoBehaviour {
 		isMoving = false;
 		var h = Input.GetAxisRaw ("Horizontal");
 		var v = Input.GetAxisRaw ("Vertical");
+		var attack = Input.GetKeyDown (KeyCode.Space);
 
 		if (h < 0 || h > 0 || v < 0 || v > 0) {
 			isMoving = true;
+			lastDirection = rb.velocity;
+			if (!boxCollider.IsTouchingLayers (Physics2D.AllLayers)) {
+				
+			}
 		}
 
 		deltaForce = new Vector2 (h, v);
-
+		Debug.Log (attack);
 		CalculateMovement (deltaForce * speed);
+		sendAnimationInfo (attack);
 	}
 
 	/// <summary>
@@ -64,17 +69,26 @@ public class Controller : MonoBehaviour {
 	void CalculateMovement(Vector2 playerForce) {
 		rb.velocity = Vector2.zero;
 		rb.AddForce (playerForce, ForceMode2D.Impulse);
-		sendAnimationInfo ();
 	}
+
+	float attackX = 0;
+	float attackY = 0;
 
 	/// <summary>
 	/// Send animator information on player.
 	/// </summary>
-	private void sendAnimationInfo() {
+	private void sendAnimationInfo(bool attack) {
 		animator.SetFloat ("xSpeed", rb.velocity.x);
-		animator.SetFloat ("ySpeed", rb.velocity.x);
+		animator.SetFloat ("ySpeed", rb.velocity.y);
 		animator.SetFloat ("lastX", lastDirection.x);
 		animator.SetFloat ("lastY", lastDirection.y);
-		animator.SetBool ("xSpeed", rb.velocity.x);
+		animator.SetBool ("isMoving", isMoving);
+		if (attack) {
+			animator.SetTrigger ("attack");
+			attackX = lastDirection.x;
+			attackY = lastDirection.y;
+		}
+		animator.SetFloat ("attackX", attackX);
+		animator.SetFloat ("attackY", attackY);
 	}
 }
