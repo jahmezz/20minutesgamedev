@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Script on the heart piece item.
+/// </summary>
 [RequireComponent (typeof(BoxCollider2D))]
 public class HeartPieces : MonoBehaviour {
 
@@ -14,14 +17,13 @@ public class HeartPieces : MonoBehaviour {
 		heartUI = FindObjectOfType<HeartUI> ();
 	}
 
-	// Update is called once per frame
-	void Update() {
-		
-	}
-
+	/// <summary>
+	/// Player picks up a heart piece.
+	/// </summary>
+	/// <param name="other">Other.</param>
 	public void OnTriggerEnter2D(Collider2D other) {
 		if (other.tag == "Player") {
-			heartUI.AddHeartPiece (heartPieceValue);
+			heartUI.addHeartPiece (heartPieceValue);
 			Destroy (gameObject);
 		}	
 	}

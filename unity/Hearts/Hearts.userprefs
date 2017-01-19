@@ -1,0 +1,15 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/HeartIcon.cs">
+    <Files>
+      <File FileName="Assets/Player.cs" Line="7" Column="38" />
+      <File FileName="Assets/HeartIcon.cs" Line="15" Column="40" />
+      <File FileName="Assets/HeartPieces.cs" Line="12" Column="16" />
+      <File FileName="Assets/HeartUI.cs" Line="16" Column="2" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

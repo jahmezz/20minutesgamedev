@@ -16,16 +16,16 @@ public class HeartUI : MonoBehaviour {
 
 	// Use this for initialization
 	void Start() {
-		updateHearts ();
+		resetHearts ();
 	}
 
 	/// <summary>
 	/// This function is where we will update the list of hearts UI.
 	/// </summary>
-	private void updateHearts() {
+	private void resetHearts() {
 		heartIcons = GetComponentsInChildren<HeartIcon> ().ToList ();
 		player = FindObjectOfType<Player> ();
-		player.maxHealth = heartIcons.Count * 4;
+		player.maxHealth = heartIcons.Count * 2;
 	}
 
 	public void Update() {
@@ -35,13 +35,17 @@ public class HeartUI : MonoBehaviour {
 
 	private void drawHearts() {
 		for (int i = 1; i < heartIcons.Count + 1; i++) {
-			drawHeartPiece = player.currentHealth % 4;
+			//find the remainder
+			drawHeartPiece = player.currentHealth % 2;
 
-			if (player.currentHealth >= i * 4) {
-				heartIcons [i - 1].SendAnimValue (4);
+			//if we are above this heart, then fill it
+			if (player.currentHealth >= i * 2) {
+				heartIcons [i - 1].SendAnimValue (2);
 			} else {
-				if ((player.currentHealth - ((i - 1) * 4)) <= 0) {
+				//if we are below this heart, then leave empty
+				if ((player.currentHealth - ((i - 1) * 2)) <= 0) {
 					heartIcons [i - 1].SendAnimValue (0);
+					//else fill it halfway
 				} else {
 					heartIcons [i - 1].SendAnimValue (drawHeartPiece);
 				}
@@ -49,6 +53,10 @@ public class HeartUI : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Logic for when player picks up heart piece.
+	/// </summary>
+	/// <param name="heartPieceValue">Heart piece value.</param>
 	public void addHeartPiece(int heartPieceValue) {
 		if (heartIcons.Count >= maxHeartContainer) {
 			return;
@@ -59,7 +67,7 @@ public class HeartUI : MonoBehaviour {
 			GameObject temp = Instantiate (heartPieceUI, Vector2.zero, Quaternion.identity) as GameObject;
 			temp.transform.SetParent (this.transform);
 			heartPieces -= 4;
-			updateHearts ();
+			resetHearts ();
 			player.currentHealth = player.maxHealth;
 		}
 	}
