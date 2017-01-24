@@ -51,6 +51,7 @@
      <Compile Include="Assets\Hearts\HeartUI.cs" />
      <Compile Include="Assets\Scripts\Controller.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\TileWindow.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
