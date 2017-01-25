@@ -12,3 +12,10 @@
 /Users/jameskahng/20minutesgamedev/unity/Project Juke/Temp/bin/Debug/Unity.CecilTools.dll
 /Users/jameskahng/20minutesgamedev/unity/Project Juke/Temp/bin/Debug/Mono.Cecil.Pdb.dll
 /Users/jameskahng/20minutesgamedev/unity/Project Juke/Temp/bin/Debug/Mono.Cecil.Mdb.dll
+/Users/jameskahng/20minutesgamedev/unity/Project Juke/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+/Users/jameskahng/20minutesgamedev/unity/Project Juke/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/jameskahng/20minutesgamedev/unity/Project Juke/obj/Debug/Assembly-CSharp.dll
+/Users/jameskahng/20minutesgamedev/unity/Project Juke/obj/Debug/Assembly-CSharp.dll.mdb
+/Users/jameskahng/20minutesgamedev/unity/Project Juke/Temp/bin/Debug/UnityEngine.PlaymodeTestsRunner.dll
+/Users/jameskahng/20minutesgamedev/unity/Project Juke/Temp/bin/Debug/UnityEngine.HoloLens.dll
+/Users/jameskahng/20minutesgamedev/unity/Project Juke/Temp/bin/Debug/UnityEngine.VR.dll

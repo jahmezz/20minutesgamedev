@@ -78,9 +78,13 @@
 -define:UNITY_EDITOR_64
 -define:UNITY_EDITOR_OSX
 -define:UNITY_TEAM_LICENSE
+'Assets/Enemy.cs'
+'Assets/GameController.cs'
+'Assets/HeartItem.cs'
 'Assets/Hearts/HeartIcon.cs'
 'Assets/Hearts/HeartPieces.cs'
 'Assets/Hearts/HeartUI.cs'
+'Assets/Rupee.cs'
 'Assets/Scripts/Controller.cs'
 'Assets/Scripts/Player.cs'
 'Assets/TileWindow.cs'

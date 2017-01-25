@@ -1,9 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Hearts/HeartUI.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Hearts/HeartPieces.cs">
     <Files>
+      <File FileName="Assets/TileWindow.cs" Line="1" Column="1" />
       <File FileName="Assets/Hearts/HeartUI.cs" Line="37" Column="51" />
-      <File FileName="Assets/Scripts/Controller.cs" Line="89" Column="30" />
+      <File FileName="Assets/Scripts/Controller.cs" Line="1" Column="1" />
+      <File FileName="Assets/Hearts/HeartPieces.cs" Line="8" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
