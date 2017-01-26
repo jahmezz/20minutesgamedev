@@ -4,11 +4,10 @@ using System.Collections;
 
 [RequireComponent (typeof(Rigidbody2D))]
 [RequireComponent (typeof(Animator))]
-[RequireComponent (typeof(BoxCollider2D))]
 public class Controller : MonoBehaviour {
 	private Rigidbody2D rb;
 	Animator animator;
-	private BoxCollider2D boxCollider;
+	private CircleCollider2D circleCollider;
 
 	/// <summary>
 	/// The force applied to the player.
@@ -26,7 +25,7 @@ public class Controller : MonoBehaviour {
 	void Awake() {
 		animator = GetComponent<Animator> ();
 		rb = GetComponent<Rigidbody2D> ();
-		boxCollider = GetComponent < BoxCollider2D> ();
+		circleCollider = GetComponent < CircleCollider2D> ();
 	}
 
 	private void Start() {
@@ -51,13 +50,12 @@ public class Controller : MonoBehaviour {
 		if (h < 0 || h > 0 || v < 0 || v > 0) {
 			isMoving = true;
 			lastDirection = rb.velocity;
-			if (!boxCollider.IsTouchingLayers (Physics2D.AllLayers)) {
+			if (!circleCollider.IsTouchingLayers (Physics2D.AllLayers)) {
 				
 			}
 		}
 
 		deltaForce = new Vector2 (h, v);
-		Debug.Log (attack);
 		CalculateMovement (deltaForce * speed);
 		sendAnimationInfo (attack);
 	}

@@ -6,7 +6,6 @@ using UnityEngine;
 /// Script on the player.
 /// </summary>
 [RequireComponent (typeof(Rigidbody2D))]
-[RequireComponent (typeof(BoxCollider2D))]
 public class Player : MonoBehaviour {
 
 	public int currentHealth;

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
 
+	Animator animator;
 	// Use this for initialization
 	void Start() {
-		
+		animator = GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -16,10 +17,12 @@ public class Enemy : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.CompareTag ("Player")) {
-			this.InvokeRepeating ("Blink", 3.0f, 0.5f);
+			Debug.Log ("Entered");
+			animator.SetTrigger ("Blink");
 		}
 	}
 
 	void Blink() {
+		
 	}
 }
