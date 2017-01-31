@@ -16,8 +16,7 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		if (other.CompareTag ("Player")) {
-			Debug.Log ("Entered");
+		if (other.CompareTag ("Sword")) {
 			animator.SetTrigger ("Blink");
 		}
 	}
