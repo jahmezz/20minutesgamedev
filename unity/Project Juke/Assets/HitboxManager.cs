@@ -46,6 +46,8 @@ public class HitboxManager : MonoBehaviour {
 
 	private Rigidbody2D rb;
 
+	public Controller controller;
+
 	// We say box, but we're still using polygons.
 	public enum Direction {
 		up,
@@ -97,14 +99,11 @@ public class HitboxManager : MonoBehaviour {
 
 	void Start() {
 		setupFrameMap ();
+
 		rb = GetComponent <Rigidbody2D> ();
 		// Set up an array so our script can more easily set up the hit boxes
 		colliders = new PolygonCollider2D[]{ };
 
-	}
-
-	void OnTriggerEnter2D(Collider2D col) {
-		Debug.Log ("Collider hit something!");
 	}
 
 	public void setHitBox(int frame) {
@@ -127,6 +126,15 @@ public class HitboxManager : MonoBehaviour {
 	}
 
 	private Direction DetermineDirection() {
-		return Direction.up;
+		Controller controller = GetComponent ("Controller") as Controller;
+		if (controller.lastDirection.y > 0) {
+			return Direction.up;
+		} else if (controller.lastDirection.y < 0) {
+			return Direction.down;
+		} else if (controller.lastDirection.x > 0) {
+			return Direction.right;
+		} else {
+			return Direction.left;
+		}
 	}
 }

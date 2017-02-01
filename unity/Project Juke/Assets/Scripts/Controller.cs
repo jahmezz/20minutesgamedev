@@ -13,7 +13,7 @@ public class Controller : MonoBehaviour {
 	/// The force applied to the player.
 	/// </summary>
 	private Vector2 deltaForce;
-	private Vector2 lastDirection;
+	public Vector2 lastDirection;
 
 	public float speed = 2f;
 

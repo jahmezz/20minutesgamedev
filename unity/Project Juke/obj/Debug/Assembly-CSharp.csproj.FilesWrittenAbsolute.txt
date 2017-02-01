@@ -19,3 +19,5 @@
 /Users/jameskahng/20minutesgamedev/unity/Project Juke/Temp/bin/Debug/UnityEngine.PlaymodeTestsRunner.dll
 /Users/jameskahng/20minutesgamedev/unity/Project Juke/Temp/bin/Debug/UnityEngine.HoloLens.dll
 /Users/jameskahng/20minutesgamedev/unity/Project Juke/Temp/bin/Debug/UnityEngine.VR.dll
+/Users/jameskahng/20minutesgamedev/unity/Project Juke/Temp/bin/Debug/UnityEngine.Advertisements.dll
+/Users/jameskahng/20minutesgamedev/unity/Project Juke/Temp/bin/Debug/UnityEngine.Purchasing.dll
