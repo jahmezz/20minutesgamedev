@@ -19,6 +19,8 @@ public class Controller : MonoBehaviour {
 
 	private bool isMoving;
 
+	public Direction direction;
+
 	/// <summary>
 	/// This runs before the start method, so put all initialization here to separate initialization and configuration.
 	/// </summary>
@@ -49,7 +51,7 @@ public class Controller : MonoBehaviour {
 
 		if (h < 0 || h > 0 || v < 0 || v > 0) {
 			isMoving = true;
-			lastDirection = rb.velocity;
+			direction = determineDirection (rb.velocity);
 			if (!circleCollider.IsTouchingLayers (Physics2D.AllLayers)) {
 				
 			}
@@ -58,6 +60,18 @@ public class Controller : MonoBehaviour {
 		deltaForce = new Vector2 (h, v);
 		CalculateMovement (deltaForce * speed);
 		sendAnimationInfo (attack);
+	}
+
+	public Direction determineDirection(Vector2 velocity) {
+		if (velocity.x > 0) {
+			return Direction.right;
+		} else if (velocity.x < 0) {
+			return Direction.left;
+		} else if (velocity.y > 0) {
+			return Direction.up;
+		} else {
+			return Direction.down;
+		}
 	}
 
 	/// <summary>
@@ -78,6 +92,7 @@ public class Controller : MonoBehaviour {
 	private void sendAnimationInfo(bool attack) {
 		animator.SetFloat ("xSpeed", rb.velocity.x);
 		animator.SetFloat ("ySpeed", rb.velocity.y);
+		animator.SetInteger ("direction", (int)direction);
 		animator.SetFloat ("lastX", lastDirection.x);
 		animator.SetFloat ("lastY", lastDirection.y);
 		animator.SetBool ("isMoving", isMoving);

@@ -2,6 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 
+// We say box, but we're still using polygons.
+public enum Direction {
+	right,
+	left,
+	up,
+	down
+}
+
 public class HitboxManager : MonoBehaviour {
 
 	//up
@@ -47,14 +55,6 @@ public class HitboxManager : MonoBehaviour {
 	private Rigidbody2D rb;
 
 	public Controller controller;
-
-	// We say box, but we're still using polygons.
-	public enum Direction {
-		up,
-		down,
-		left,
-		right
-	}
 
 	private void setupFrameMap() {
 		frameMap = new Dictionary<Direction, List<PolygonCollider2D>> ();
