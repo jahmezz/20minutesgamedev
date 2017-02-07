@@ -43,31 +43,42 @@ public class Controller : MonoBehaviour {
 	}
 
 	void CheckInput() {
+		//theory of how to implement first direction and strafe
+		//on first input, we record initialDirection
+		//while input in initialDirection > 0, we allow movement up, left and right
+		//when input <= 0, set direction null
+		//
+
 		//raw means the only possible values are -1, 0, and 1
 		isMoving = false;
 		var h = Input.GetAxisRaw ("Horizontal");
 		var v = Input.GetAxisRaw ("Vertical");
 		var attack = Input.GetKeyDown (KeyCode.Space);
 
+		Debug.Log ("h: " + h);
+		Debug.Log ("v: " + v);
 		if (h < 0 || h > 0 || v < 0 || v > 0) {
 			isMoving = true;
-			direction = determineDirection (rb.velocity);
-			if (!circleCollider.IsTouchingLayers (Physics2D.AllLayers)) {
-				
+			if (direction == null) {
+				direction = determineDirection (h, v);
 			}
 		}
-
 		deltaForce = new Vector2 (h, v);
-		CalculateMovement (deltaForce * speed);
+		CalculateMovement (direction, deltaForce * speed);
 		sendAnimationInfo (attack);
 	}
 
-	public Direction determineDirection(Vector2 velocity) {
-		if (velocity.x > 0) {
+	public Direction determineDirection(float h, float v) {
+		if (h > v)
+			v = 0;
+		else if (h < v)
+			h = 0;
+		
+		if (h > 0) {
 			return Direction.right;
-		} else if (velocity.x < 0) {
+		} else if (h < 0) {
 			return Direction.left;
-		} else if (velocity.y > 0) {
+		} else if (v > 0) {
 			return Direction.up;
 		} else {
 			return Direction.down;
@@ -78,7 +89,7 @@ public class Controller : MonoBehaviour {
 	/// Finds where the player will move.
 	/// </summary>
 	/// <param name="playerForce">Player force.</param>
-	void CalculateMovement(Vector2 playerForce) {
+	void CalculateMovement(Direction direction, Vector2 playerForce) {
 		rb.velocity = Vector2.zero;
 		rb.AddForce (playerForce, ForceMode2D.Impulse);
 	}
@@ -92,6 +103,7 @@ public class Controller : MonoBehaviour {
 	private void sendAnimationInfo(bool attack) {
 		animator.SetFloat ("xSpeed", rb.velocity.x);
 		animator.SetFloat ("ySpeed", rb.velocity.y);
+		Debug.Log ((int)direction);
 		animator.SetInteger ("direction", (int)direction);
 		animator.SetFloat ("lastX", lastDirection.x);
 		animator.SetFloat ("lastY", lastDirection.y);

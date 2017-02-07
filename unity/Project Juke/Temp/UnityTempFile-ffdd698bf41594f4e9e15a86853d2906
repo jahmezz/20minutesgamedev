@@ -18,7 +18,6 @@
 -define:UNITY_5_5
 -define:UNITY_5
 -define:UNITY_64
--define:UNITY_ANALYTICS
 -define:ENABLE_AUDIO
 -define:ENABLE_CACHING
 -define:ENABLE_CLOTH
