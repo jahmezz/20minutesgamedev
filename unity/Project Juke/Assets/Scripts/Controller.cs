@@ -16,6 +16,7 @@ public class Controller : MonoBehaviour {
 	public Vector2 lastDirection;
 
 	public float speed = 2f;
+	public float strafeSpeed = 1f;
 
 	private bool isMoving;
 
@@ -50,7 +51,7 @@ public class Controller : MonoBehaviour {
 		//
 
 		//raw means the only possible values are -1, 0, and 1
-		isMoving = false;
+
 		var h = Input.GetAxisRaw ("Horizontal");
 		var v = Input.GetAxisRaw ("Vertical");
 		var attack = Input.GetKeyDown (KeyCode.Space);
@@ -58,21 +59,41 @@ public class Controller : MonoBehaviour {
 		Debug.Log ("h: " + h);
 		Debug.Log ("v: " + v);
 		if (h < 0 || h > 0 || v < 0 || v > 0) {
-			isMoving = true;
-			if (direction == null) {
-				direction = determineDirection (h, v);
+			if (directionChanged (direction, h, v)) {
+				direction = determineDirection (direction, h, v);
 			}
+			isMoving = true;
+			//when you first start moving, store the direction
+
+		} else {
+			isMoving = false;
+		}
+
+		if (direction == Direction.up || direction == Direction.down) {
+			h = h / 2;
+		} else if (direction == Direction.left || direction == Direction.right) {
+			v = v / 2;
 		}
 		deltaForce = new Vector2 (h, v);
 		CalculateMovement (direction, deltaForce * speed);
-		sendAnimationInfo (attack);
+		sendAnimationInfo (direction, attack);
 	}
 
-	public Direction determineDirection(float h, float v) {
-		if (h > v)
-			v = 0;
-		else if (h < v)
-			h = 0;
+	public bool directionChanged(Direction direction, float h, float v) {
+		if (direction == Direction.up) {
+			return v <= 0;
+		} else if (direction == Direction.down) {
+			return v >= 0;
+		} else if (direction == Direction.left) {
+			return h >= 0;
+		} else if (direction == Direction.right) {
+			return h <= 0;
+		} else {
+			return true;
+		}
+	}
+
+	public Direction determineDirection(Direction direction, float h, float v) {
 		
 		if (h > 0) {
 			return Direction.right;
@@ -100,13 +121,11 @@ public class Controller : MonoBehaviour {
 	/// <summary>
 	/// Send animator information on player.
 	/// </summary>
-	private void sendAnimationInfo(bool attack) {
+	private void sendAnimationInfo(Direction direction, bool attack) {
 		animator.SetFloat ("xSpeed", rb.velocity.x);
 		animator.SetFloat ("ySpeed", rb.velocity.y);
-		Debug.Log ((int)direction);
+
 		animator.SetInteger ("direction", (int)direction);
-		animator.SetFloat ("lastX", lastDirection.x);
-		animator.SetFloat ("lastY", lastDirection.y);
 		animator.SetBool ("isMoving", isMoving);
 		if (attack) {
 			animator.SetTrigger ("attack");
