@@ -99,7 +99,7 @@ public class HitboxManager : MonoBehaviour {
 
 	void Start() {
 		setupFrameMap ();
-
+		controller = GetComponent ("Controller") as Controller;
 		rb = GetComponent <Rigidbody2D> ();
 		// Set up an array so our script can more easily set up the hit boxes
 		colliders = new PolygonCollider2D[]{ };
@@ -107,9 +107,9 @@ public class HitboxManager : MonoBehaviour {
 	}
 
 	public void setHitBox(int frame) {
-		Direction d = DetermineDirection ();
+		resetHitBoxes ();
 		List<PolygonCollider2D> frames = null;
-		frameMap.TryGetValue (d, out frames);
+		frameMap.TryGetValue (controller.animationDirection, out frames);
 		frames.ForEach (delegate(PolygonCollider2D collider) {
 			collider.enabled = false;
 		});
@@ -118,23 +118,31 @@ public class HitboxManager : MonoBehaviour {
 		}
 	}
 
+	private void resetHitBoxes() {
+		List<PolygonCollider2D> frames = null;
+		frameMap.TryGetValue (Direction.up, out frames);
+		frames.ForEach (delegate(PolygonCollider2D collider) {
+			collider.enabled = false;
+		});
+		frameMap.TryGetValue (Direction.down, out frames);
+		frames.ForEach (delegate(PolygonCollider2D collider) {
+			collider.enabled = false;
+		});
+		frameMap.TryGetValue (Direction.left, out frames);
+		frames.ForEach (delegate(PolygonCollider2D collider) {
+			collider.enabled = false;
+		});
+		frameMap.TryGetValue (Direction.right, out frames);
+		frames.ForEach (delegate(PolygonCollider2D collider) {
+			collider.enabled = false;
+		});
+
+	}
+
 	private void setFrameHitbox(int frame, List<PolygonCollider2D>frames) {
 		frames.ForEach (delegate(PolygonCollider2D collider) {
 			collider.enabled = false;
 		});
 		frames [frame].enabled = true;
-	}
-
-	private Direction DetermineDirection() {
-		Controller controller = GetComponent ("Controller") as Controller;
-		if (controller.lastDirection.y > 0) {
-			return Direction.up;
-		} else if (controller.lastDirection.y < 0) {
-			return Direction.down;
-		} else if (controller.lastDirection.x > 0) {
-			return Direction.right;
-		} else {
-			return Direction.left;
-		}
 	}
 }

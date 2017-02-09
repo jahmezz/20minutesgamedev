@@ -21,6 +21,7 @@ public class Controller : MonoBehaviour {
 	private bool isMoving;
 
 	public Direction direction;
+	public Direction animationDirection;
 
 	/// <summary>
 	/// This runs before the start method, so put all initialization here to separate initialization and configuration.
@@ -129,10 +130,7 @@ public class Controller : MonoBehaviour {
 		animator.SetBool ("isMoving", isMoving);
 		if (attack) {
 			animator.SetTrigger ("attack");
-			attackX = lastDirection.x;
-			attackY = lastDirection.y;
+			animationDirection = direction;
 		}
-		animator.SetFloat ("attackX", attackX);
-		animator.SetFloat ("attackY", attackY);
 	}
 }
