@@ -7,18 +7,17 @@ using System.Collections;
 public class Controller : MonoBehaviour {
 	private Rigidbody2D rb;
 	Animator animator;
-	private CircleCollider2D circleCollider;
 
 	/// <summary>
 	/// The force applied to the player.
 	/// </summary>
 	private Vector2 deltaForce;
-	public Vector2 lastDirection;
 
 	public float speed = 2f;
 	public float strafeSpeed = 1f;
 
 	private bool isMoving;
+	public bool isAttacking;
 
 	public Direction direction;
 	public Direction animationDirection;
@@ -29,7 +28,6 @@ public class Controller : MonoBehaviour {
 	void Awake() {
 		animator = GetComponent<Animator> ();
 		rb = GetComponent<Rigidbody2D> ();
-		circleCollider = GetComponent < CircleCollider2D> ();
 	}
 
 	private void Start() {
@@ -57,8 +55,6 @@ public class Controller : MonoBehaviour {
 		var v = Input.GetAxisRaw ("Vertical");
 		var attack = Input.GetKeyDown (KeyCode.Space);
 
-		Debug.Log ("h: " + h);
-		Debug.Log ("v: " + v);
 		if (h < 0 || h > 0 || v < 0 || v > 0) {
 			if (directionChanged (direction, h, v)) {
 				direction = determineDirection (direction, h, v);
@@ -128,7 +124,8 @@ public class Controller : MonoBehaviour {
 
 		animator.SetInteger ("direction", (int)direction);
 		animator.SetBool ("isMoving", isMoving);
-		if (attack) {
+		if (!isAttacking && attack) {
+			isAttacking = true;
 			animator.SetTrigger ("attack");
 			animationDirection = direction;
 		}

@@ -110,11 +110,10 @@ public class HitboxManager : MonoBehaviour {
 		resetHitBoxes ();
 		List<PolygonCollider2D> frames = null;
 		frameMap.TryGetValue (controller.animationDirection, out frames);
-		frames.ForEach (delegate(PolygonCollider2D collider) {
-			collider.enabled = false;
-		});
 		if (frame < 6) {
 			setFrameHitbox (frame, frames);
+		} else {
+			controller.isAttacking = false;
 		}
 	}
 

@@ -17,6 +17,5 @@ public class Player : MonoBehaviour {
 	[ExecuteInEditMode]
 	void OnValidate() {
 		currentHealth = Mathf.Clamp (currentHealth, 0, maxHealth);
-
 	}
 }

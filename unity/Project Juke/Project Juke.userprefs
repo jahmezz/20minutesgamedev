@@ -3,8 +3,8 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Controller.cs">
     <Files>
       <File FileName="Assets/Enemy.cs" Line="20" Column="34" />
-      <File FileName="Assets/Scripts/Controller.cs" Line="95" Column="46" />
-      <File FileName="Assets/HitboxManager.cs" Line="8" Column="7" />
+      <File FileName="Assets/Scripts/Controller.cs" Line="130" Column="43" />
+      <File FileName="Assets/HitboxManager.cs" Line="127" Column="53" />
       <File FileName="Assets/Rupee.cs" Line="11" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>

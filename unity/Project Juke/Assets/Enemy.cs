@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		if (other.CompareTag ("Sword")) {
+		if (!this.animator.GetCurrentAnimatorStateInfo (0).IsName ("Blink") && other.CompareTag ("Sword")) {
 			animator.SetTrigger ("Blink");
 		}
 	}
