@@ -109,10 +109,12 @@ public class HitboxManager : MonoBehaviour {
 	public void setHitBox(int frame) {
 		resetHitBoxes ();
 		List<PolygonCollider2D> frames = null;
-		frameMap.TryGetValue (controller.animationDirection, out frames);
+		frameMap.TryGetValue (controller.attackDirection, out frames);
 		if (frame < 6) {
-			setFrameHitbox (frame, frames);
+			frames [frame].enabled = true;
+			Debug.Log (frame);
 		} else {
+			Debug.Log (frame);
 			controller.isAttacking = false;
 		}
 	}
@@ -136,12 +138,5 @@ public class HitboxManager : MonoBehaviour {
 			collider.enabled = false;
 		});
 
-	}
-
-	private void setFrameHitbox(int frame, List<PolygonCollider2D>frames) {
-		frames.ForEach (delegate(PolygonCollider2D collider) {
-			collider.enabled = false;
-		});
-		frames [frame].enabled = true;
 	}
 }

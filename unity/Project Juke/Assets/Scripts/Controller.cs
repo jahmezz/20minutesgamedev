@@ -20,7 +20,7 @@ public class Controller : MonoBehaviour {
 	public bool isAttacking;
 
 	public Direction direction;
-	public Direction animationDirection;
+	public Direction attackDirection;
 
 	/// <summary>
 	/// This runs before the start method, so put all initialization here to separate initialization and configuration.
@@ -125,9 +125,11 @@ public class Controller : MonoBehaviour {
 		animator.SetInteger ("direction", (int)direction);
 		animator.SetBool ("isMoving", isMoving);
 		if (!isAttacking && attack) {
+			Debug.Log ("ching");
 			isAttacking = true;
 			animator.SetTrigger ("attack");
-			animationDirection = direction;
+			attackDirection = direction;
+			Debug.Log ("attack " + attackDirection + "direction " + direction);
 		}
 	}
 }
