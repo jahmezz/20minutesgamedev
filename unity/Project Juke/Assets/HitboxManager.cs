@@ -112,9 +112,7 @@ public class HitboxManager : MonoBehaviour {
 		frameMap.TryGetValue (controller.attackDirection, out frames);
 		if (frame < 6) {
 			frames [frame].enabled = true;
-			Debug.Log (frame);
 		} else {
-			Debug.Log (frame);
 			controller.isAttacking = false;
 		}
 	}
