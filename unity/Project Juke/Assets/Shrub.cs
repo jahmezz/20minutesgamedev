@@ -29,16 +29,23 @@ public class Shrub : MonoBehaviour {
 
 	void spawnLeafAnimation() {
 		Vector3 shrubLocation = this.gameObject.transform.position;
-		shrubLocation.x -= renderer.sprite.bounds.size.x;
-		shrubLocation.y -= renderer.sprite.bounds.size.y;
+		shrubLocation.x -= renderer.sprite.bounds.extents.x;
+		shrubLocation.y += renderer.sprite.bounds.extents.y;
+		Debug.Log (shrubLocation);
 		for (int i = 0; i < 4; i++) {
 			int orientation = Random.Range (0, 2);
 			GameObject leaf = orientation == 0 ? leaf1 : leaf2;
 			Vector3 leafLocation = shrubLocation;
-			leafLocation.x = leafLocation.x + Random.value * 3 * renderer.sprite.bounds.size.x;
-			leafLocation.y = leafLocation.y + Random.value * 3 * renderer.sprite.bounds.size.y;
+			leafLocation.x = leafLocation.x + Random.value * 2 * renderer.sprite.bounds.size.x;
+			leafLocation.y = leafLocation.y + Random.value * renderer.sprite.bounds.extents.y;
 			GameObject newLeaf = GameObject.Instantiate (leaf, leafLocation, Quaternion.identity) as GameObject;
 			leaves.Add (newLeaf);
+		}
+	}
+
+	public void destroyLeaves() {
+		foreach (var leaf in leaves) {
+			Destroy (leaf);
 		}
 	}
 }

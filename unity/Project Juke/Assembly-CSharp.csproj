@@ -53,6 +53,7 @@
      <Compile Include="Assets\Hearts\HeartPieces.cs" />
      <Compile Include="Assets\Hearts\HeartUI.cs" />
      <Compile Include="Assets\HitboxManager.cs" />
+     <Compile Include="Assets\Leaf.cs" />
      <Compile Include="Assets\Rupee.cs" />
      <Compile Include="Assets\Scripts\Controller.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
