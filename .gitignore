@@ -1,0 +1,27 @@
+unity/Project Juke/Temp/
+unity/Project Juke/Library/
+unity/Project Juke/Obj/
+unity/Project Juke/Build/
+
+sysinfo.txt
+*.stackdump
+*.userprefs
+unity/Project Juke/[Ee]xported[Oo]bj/
+unity/Project Juke/.vs/
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln*
+*.user
+*.unityproj
+*.booproj
+unity/Project Juke/.idea*/
+
+.DS_Store*
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+[Tt]humbs.db
+[Dd]esktop.ini
