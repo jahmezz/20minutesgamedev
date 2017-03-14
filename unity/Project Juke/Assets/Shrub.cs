@@ -42,10 +42,4 @@ public class Shrub : MonoBehaviour {
 			leaves.Add (newLeaf);
 		}
 	}
-
-	public void destroyLeaves() {
-		foreach (var leaf in leaves) {
-			Destroy (leaf);
-		}
-	}
 }
