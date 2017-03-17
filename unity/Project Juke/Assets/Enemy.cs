@@ -22,29 +22,22 @@ public class Enemy : MonoBehaviour {
 		if (!this.animator.GetCurrentAnimatorStateInfo (0).IsName ("Blink") && coll.collider.CompareTag ("Sword")) {
 			animator.SetTrigger ("Blink");
 			// get pushed back
-			Vector3 center = coll.collider.bounds.center;
 
-			bool right = coll.contacts [0].point.x > center.x;
-			bool top = coll.contacts [0].point.y > center.y;
+			Vector2 dir = coll.contacts [0].point - new Vector2 (transform.position.x, transform.position.y);
+			// We then get the opposite (-Vector3) and normalize it
+			dir = -dir.normalized;
 
-			StartCoroutine (Push (right, top));
-		}
+			StartCoroutine (Push (dir));
+		} 
 	}
 
-	public IEnumerator Push(bool right, bool top) {
+	public IEnumerator Push(Vector2 dir) {
 		float elapsedTime = 0;
-		Vector3 startingPos = gameObject.transform.position;
+		Vector2 startingPos = gameObject.transform.position;
 
-		if (right) {
-			if (top) {
-				
-			}
-		}
-
-		Vector3 end = startingPos + Vector3.right * push;
-
+		Vector2 end = startingPos + dir * push;
 		while (elapsedTime < 0.1f) {
-			gameObject.transform.position = Vector3.Lerp (startingPos, startingPos + Vector3.right * push, (elapsedTime / 0.1f));
+			gameObject.transform.position = Vector3.Lerp (startingPos, end, (elapsedTime / 0.1f));
 			elapsedTime += Time.deltaTime;
 			yield return new WaitForEndOfFrame ();
 		}

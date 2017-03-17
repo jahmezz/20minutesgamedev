@@ -6,8 +6,8 @@ unity/Project Juke/Build/
 sysinfo.txt
 *.stackdump
 *.userprefs
-unity/Project Juke/[Ee]xported[Oo]bj/
-unity/Project Juke/.vs/
+unity/Project\ Juke/[Ee]xported[Oo]bj/
+unity/Project\ Juke/.vs/
 *.userprefs
 *.csproj
 *.pidb
