@@ -19,6 +19,7 @@ public class Player : MonoBehaviour {
 	void Start() {
 		animator = GetComponent<Animator> ();
 		renderer = GetComponent<SpriteRenderer> ();
+		controller = GetComponent<Controller> ();
 	}
 
 	/// <summary>
@@ -29,14 +30,20 @@ public class Player : MonoBehaviour {
 		currentHealth = Mathf.Clamp (currentHealth, 0, maxHealth);
 	}
 
+	public void Death() {
+		Destroy (this.gameObject);
+	}
+
 	private float push = 2f;
 
 	void OnCollisionEnter2D(Collision2D other) {
-		Debug.Log (other.contacts [0].otherCollider.tag);
 		if (!isBlinking && other.collider.CompareTag ("Enemy") && other.contacts [0].otherCollider.CompareTag ("Player")) {
-			animator.SetTrigger ("Blink");
-			// get pushed back
-
+			
+			currentHealth--;
+			if (currentHealth != 0) {
+				Debug.Log ("Blinking" + currentHealth);
+				animator.SetTrigger ("Blink");
+			} 
 			Vector2 dir = other.contacts [0].point - new Vector2 (transform.position.x, transform.position.y);
 			// We then get the opposite (-Vector3) and normalize it
 			dir = -dir.normalized;
@@ -52,12 +59,14 @@ public class Player : MonoBehaviour {
 		Vector2 startingPos = gameObject.transform.position;
 
 		Vector2 end = startingPos + dir * push;
-		while (elapsedTime < 2f) {
+
+		float loopTime = currentHealth > 0 ? 1f : 0.09f;
+		while (elapsedTime < loopTime) {
 			if (elapsedTime < 0.1f) {
 				gameObject.transform.position = Vector3.Lerp (startingPos, end, (elapsedTime / 0.1f));
 			}
 			switchTime += Time.deltaTime;
-			if (switchTime > 0.2f) {
+			if (switchTime > 0.1f) {
 				switchTime = 0;
 				renderer.enabled = !renderer.enabled;
 			}
@@ -66,5 +75,9 @@ public class Player : MonoBehaviour {
 		}
 		isBlinking = false;
 		renderer.enabled = true;
+		if (currentHealth == 0) {
+			controller.isDead = true;
+			animator.SetTrigger ("Death");
+		} 
 	}
 }

@@ -5,7 +5,7 @@ using System.Collections;
 [RequireComponent (typeof(Rigidbody2D))]
 [RequireComponent (typeof(Animator))]
 public class Controller : MonoBehaviour {
-	private Rigidbody2D rb;
+	public Rigidbody2D rb;
 	Animator animator;
 
 	/// <summary>
@@ -18,6 +18,7 @@ public class Controller : MonoBehaviour {
 
 	private bool isMoving;
 	public bool isAttacking;
+	public bool isDead;
 
 	public Direction direction;
 	public Direction attackDirection;
@@ -28,6 +29,7 @@ public class Controller : MonoBehaviour {
 	void Awake() {
 		animator = GetComponent<Animator> ();
 		rb = GetComponent<Rigidbody2D> ();
+		isDead = false;
 	}
 
 	private void Start() {
@@ -43,17 +45,18 @@ public class Controller : MonoBehaviour {
 	}
 
 	void CheckInput() {
-		//theory of how to implement first direction and strafe
-		//on first input, we record initialDirection
-		//while input in initialDirection > 0, we allow movement up, left and right
-		//when input <= 0, set direction null
-		//
 
 		//raw means the only possible values are -1, 0, and 1
 
 		var h = Input.GetAxisRaw ("Horizontal");
 		var v = Input.GetAxisRaw ("Vertical");
 		var attack = Input.GetKeyDown (KeyCode.Space);
+
+		if (isDead) {
+			h = 0;
+			v = 0;
+			attack = false;
+		}
 
 		if (h < 0 || h > 0 || v < 0 || v > 0) {
 			if (directionChanged (direction, h, v)) {
