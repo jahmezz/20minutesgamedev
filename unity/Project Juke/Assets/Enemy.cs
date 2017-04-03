@@ -44,8 +44,20 @@ public class Enemy : MonoBehaviour {
 		}
 		gameObject.transform.position = end;
 		health--;
+		Debug.Log (health);
 		if (health == 0) {
-			Destroy (this.gameObject);
+			PlayDead ();
 		}
+	}
+
+	private void PlayDead() {
+		while (this.animator.GetCurrentAnimatorStateInfo (0).IsName ("Blink")) {
+			//wait
+		}
+		animator.SetTrigger ("Death");
+	}
+
+	private void Dead() {
+		Destroy (this.gameObject);
 	}
 }
