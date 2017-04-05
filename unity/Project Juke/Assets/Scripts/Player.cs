@@ -31,6 +31,11 @@ public class Player : MonoBehaviour {
 	}
 
 	public void Death() {
+		StartCoroutine (Die ());
+	}
+
+	private  IEnumerator Die() {
+		yield return new WaitForSeconds (1);
 		Destroy (this.gameObject);
 	}
 
