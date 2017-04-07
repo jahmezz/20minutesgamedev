@@ -1,13 +1,16 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Player.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/GameController.cs">
     <Files>
+      <File FileName="Assets/HeartItem.cs" Line="10" Column="60" />
+      <File FileName="Assets/Scripts/Player.cs" Line="22" Column="44" />
       <File FileName="Assets/Scripts/Controller.cs" Line="1" Column="1" />
       <File FileName="Assets/Enemy.cs" Line="49" Column="16" />
-      <File FileName="Assets/Scripts/Player.cs" Line="38" Column="37" />
-      <File FileName="Assets/Shrub.cs" Line="1" Column="1" />
+      <File FileName="Assets/Shrub.cs" Line="19" Column="48" />
       <File FileName="Assets/Leaf.cs" Line="1" Column="1" />
       <File FileName="Assets/Hearts/HeartUI.cs" Line="1" Column="1" />
+      <File FileName="Assets/GameController.cs" Line="28" Column="43" />
+      <File FileName="Assets/Rupee.cs" Line="12" Column="40" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

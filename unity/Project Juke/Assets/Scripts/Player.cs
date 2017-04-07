@@ -30,6 +30,8 @@ public class Player : MonoBehaviour {
 		currentHealth = Mathf.Clamp (currentHealth, 0, maxHealth);
 	}
 
+
+
 	public void Death() {
 		StartCoroutine (Die ());
 	}

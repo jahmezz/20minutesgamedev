@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour {
 	void Start() {
 		health = 4;
 		animator = GetComponent<Animator> ();
+		animator.SetInteger ("enemyHealth", health);
 	}
 	
 	// Update is called once per frame
@@ -45,16 +46,7 @@ public class Enemy : MonoBehaviour {
 		gameObject.transform.position = end;
 		health--;
 		Debug.Log (health);
-		if (health == 0) {
-			PlayDead ();
-		}
-	}
-
-	private void PlayDead() {
-		while (this.animator.GetCurrentAnimatorStateInfo (0).IsName ("Blink")) {
-			//wait
-		}
-		animator.SetTrigger ("Death");
+		animator.SetInteger ("enemyHealth", health);
 	}
 
 	private void Dead() {
