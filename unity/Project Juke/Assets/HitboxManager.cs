@@ -56,6 +56,10 @@ public class HitboxManager : MonoBehaviour {
 
 	public Controller controller;
 
+	public GameObject sword;
+
+	public GameObject link;
+
 	private void setupFrameMap() {
 		frameMap = new Dictionary<Direction, List<PolygonCollider2D>> ();
 		List<PolygonCollider2D> upList = new List<PolygonCollider2D> ();
@@ -104,6 +108,10 @@ public class HitboxManager : MonoBehaviour {
 		// Set up an array so our script can more easily set up the hit boxes
 		colliders = new PolygonCollider2D[]{ };
 
+	}
+
+	void FixedUpdate() {
+		sword.gameObject.transform.position = link.gameObject.transform.position;
 	}
 
 	public void setHitBox(int frame) {

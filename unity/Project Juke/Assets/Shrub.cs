@@ -20,9 +20,11 @@ public class Shrub : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D other) {
-		if (other.collider.tag == "Sword") {
+		Debug.Log ("shrub");
+		Debug.Log (other.collider.tag);
+		if (other.collider.CompareTag ("Sword")) {
 			renderer.sprite = stump;
-			collider.isTrigger = true;
+			collider.isTrigger = false;
 			spawnLeafAnimation ();
 		}
 	}

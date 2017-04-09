@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HeartItem : MonoBehaviour {
-	Player player;
+	public Player player;
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.tag == "Player" || other.tag == "Sword") {
-			other.GetComponentInParent<Player> ().currentHealth += 2;
+			player.currentHealth += 2;
 			Destroy (gameObject);
 		}	
 	}
