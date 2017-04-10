@@ -30,6 +30,10 @@ public class Player : MonoBehaviour {
 		currentHealth = Mathf.Clamp (currentHealth, 0, maxHealth);
 	}
 
+	public void addHealth(int amount) {
+		currentHealth = Mathf.Clamp (currentHealth + amount, 0, maxHealth);
+	}
+
 
 
 	public void Death() {

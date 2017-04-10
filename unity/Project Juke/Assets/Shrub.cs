@@ -19,12 +19,16 @@ public class Shrub : MonoBehaviour {
 		collider = GetComponent<CircleCollider2D> ();
 	}
 
+	void OnColliderEnter2D(Collider2D collider) {
+		Debug.Log (collider.tag);
+	}
+
 	void OnCollisionEnter2D(Collision2D other) {
 		Debug.Log ("shrub");
 		Debug.Log (other.collider.tag);
 		if (other.collider.CompareTag ("Sword")) {
+			collider.isTrigger = true;
 			renderer.sprite = stump;
-			collider.isTrigger = false;
 			spawnLeafAnimation ();
 		}
 	}

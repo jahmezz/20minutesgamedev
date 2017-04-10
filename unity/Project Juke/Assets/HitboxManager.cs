@@ -110,10 +110,6 @@ public class HitboxManager : MonoBehaviour {
 
 	}
 
-	void FixedUpdate() {
-		sword.gameObject.transform.position = link.gameObject.transform.position;
-	}
-
 	public void setHitBox(int frame) {
 		resetHitBoxes ();
 		List<PolygonCollider2D> frames = null;

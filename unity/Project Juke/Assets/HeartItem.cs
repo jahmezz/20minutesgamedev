@@ -7,7 +7,7 @@ public class HeartItem : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.tag == "Player" || other.tag == "Sword") {
-			player.currentHealth += 2;
+			other.GetComponentInParent<Player> ().addHealth (2);
 			Destroy (gameObject);
 		}	
 	}
