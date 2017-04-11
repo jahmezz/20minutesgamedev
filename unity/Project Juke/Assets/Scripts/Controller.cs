@@ -48,14 +48,10 @@ public class Controller : MonoBehaviour {
 	void CheckInput() {
 
 		//raw means the only possible values are -1, 0, and 1
-		var r = Input.GetKeyDown (KeyCode.R);
 		var h = Input.GetAxisRaw ("Horizontal");
 		var v = Input.GetAxisRaw ("Vertical");
 		var attack = Input.GetKeyDown (KeyCode.Space);
 
-		if (r) {
-			SceneManager.LoadScene ("main");
-		}
 		if (isDead) {
 			h = 0;
 			v = 0;

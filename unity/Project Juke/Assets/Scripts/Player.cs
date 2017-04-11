@@ -14,6 +14,7 @@ public class Player : MonoBehaviour {
 	Animator animator;
 	SpriteRenderer renderer;
 	Controller controller;
+	public GameController gm;
 	bool isBlinking = false;
 	// Use this for initialization
 	void Start() {
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour {
 	private  IEnumerator Die() {
 		yield return new WaitForSeconds (1);
 		Destroy (this.gameObject);
+		gm.gameOver ();
 	}
 
 	private float push = 2f;
@@ -88,6 +90,7 @@ public class Player : MonoBehaviour {
 		renderer.enabled = true;
 		if (currentHealth == 0) {
 			controller.isDead = true;
+
 			animator.SetTrigger ("Death");
 		} 
 	}
