@@ -8,11 +8,13 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour {
 	public Text rupeeDisplay;
 	public Text gameOverDisplay;
+	private bool isGameOver;
 	private int rupees;
 	// Use this for initialization
 	void Start() {
 		rupeeDisplay.text = "Rupees: " + rupees;
 		gameOverDisplay.enabled = false;
+		isGameOver = false;
 	}
 	
 	// Update is called once per frame
@@ -43,5 +45,6 @@ public class GameController : MonoBehaviour {
 
 	public void gameOver() {
 		gameOverDisplay.enabled = true;
+		isGameOver = true;
 	}
 }
