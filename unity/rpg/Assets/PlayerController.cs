@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour {
 		var h = Input.GetAxisRaw ("Horizontal");
 		var v = Input.GetAxisRaw ("Vertical");
 
+		var l = Input.GetKeyDown (KeyCode.Space);
+
 		if (h > 0.5) {
 			direction = 0;
 			v = 0;

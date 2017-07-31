@@ -1,23 +1,29 @@
 fileFormatVersion: 2
-guid: f07d7a3ebcbe14f548ef9f34a40329c0
-timeCreated: 1497940148
+guid: 8fd8f605ff9b34d6c9779c603f973f10
+timeCreated: 1501366124
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: maskdude2 (3)_0
-    21300002: maskdude2 (3)_1
-    21300004: maskdude2 (3)_2
-    21300006: maskdude2 (3)_3
-    21300008: maskdude2 (3)_4
-    21300010: maskdude2 (3)_5
-    21300012: maskdude2 (3)_6
-    21300014: maskdude2 (3)_7
-    21300016: maskdude2 (3)_8
-    21300018: maskdude2 (3)_9
-    21300020: maskdude2 (3)_10
-    21300022: maskdude2 (3)_11
-    21300024: maskdude2 (3)_12
-    21300026: maskdude2 (3)_13
+    21300000: slime_0
+    21300002: slime_1
+    21300004: slime_2
+    21300006: slime_3
+    21300008: slime_4
+    21300010: slime_5
+    21300012: slime_6
+    21300014: slime_7
+    21300016: slime_8
+    21300018: slime_9
+    21300020: slime_10
+    21300022: slime_11
+    21300024: slime_12
+    21300026: slime_13
+    21300028: slime_14
+    21300030: slime_15
+    21300032: slime_16
+    21300034: slime_17
+    21300036: slime_18
+    21300038: slime_19
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -41,7 +47,7 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -1
     wrapMode: 1
@@ -67,7 +73,7 @@ TextureImporter:
   - buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -75,7 +81,7 @@ TextureImporter:
   - buildTarget: Standalone
     maxTextureSize: 2048
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -83,7 +89,7 @@ TextureImporter:
   - buildTarget: WebGL
     maxTextureSize: 2048
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -92,7 +98,59 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: maskdude2 (3)_0
+      name: slime_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: slime_1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: slime_2
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: slime_3
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 384
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: slime_4
       rect:
         serializedVersion: 2
         x: 0
@@ -100,12 +158,12 @@ TextureImporter:
         width: 96
         height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: maskdude2 (3)_1
+      name: slime_5
       rect:
         serializedVersion: 2
         x: 96
@@ -113,12 +171,12 @@ TextureImporter:
         width: 96
         height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: maskdude2 (3)_2
+      name: slime_6
       rect:
         serializedVersion: 2
         x: 192
@@ -126,12 +184,12 @@ TextureImporter:
         width: 96
         height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: maskdude2 (3)_3
+      name: slime_7
       rect:
         serializedVersion: 2
         x: 288
@@ -139,12 +197,12 @@ TextureImporter:
         width: 96
         height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: maskdude2 (3)_4
+      name: slime_8
       rect:
         serializedVersion: 2
         x: 0
@@ -152,12 +210,12 @@ TextureImporter:
         width: 96
         height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: maskdude2 (3)_5
+      name: slime_9
       rect:
         serializedVersion: 2
         x: 96
@@ -165,12 +223,12 @@ TextureImporter:
         width: 96
         height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: maskdude2 (3)_6
+      name: slime_10
       rect:
         serializedVersion: 2
         x: 192
@@ -178,12 +236,12 @@ TextureImporter:
         width: 96
         height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: maskdude2 (3)_7
+      name: slime_11
       rect:
         serializedVersion: 2
         x: 288
@@ -191,12 +249,12 @@ TextureImporter:
         width: 96
         height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: maskdude2 (3)_8
+      name: slime_12
       rect:
         serializedVersion: 2
         x: 0
@@ -204,12 +262,12 @@ TextureImporter:
         width: 96
         height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: maskdude2 (3)_9
+      name: slime_13
       rect:
         serializedVersion: 2
         x: 96
@@ -217,12 +275,12 @@ TextureImporter:
         width: 96
         height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: maskdude2 (3)_10
+      name: slime_14
       rect:
         serializedVersion: 2
         x: 192
@@ -230,12 +288,12 @@ TextureImporter:
         width: 96
         height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: maskdude2 (3)_11
+      name: slime_15
       rect:
         serializedVersion: 2
         x: 288
@@ -243,12 +301,12 @@ TextureImporter:
         width: 96
         height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: maskdude2 (3)_12
+      name: slime_16
       rect:
         serializedVersion: 2
         x: 0
@@ -256,12 +314,12 @@ TextureImporter:
         width: 96
         height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: maskdude2 (3)_13
+      name: slime_17
       rect:
         serializedVersion: 2
         x: 96
@@ -269,7 +327,33 @@ TextureImporter:
         width: 96
         height: 96
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: slime_18
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: slime_19
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
