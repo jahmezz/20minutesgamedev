@@ -7,7 +7,7 @@ public class DialogueManager : MonoBehaviour {
 
 
 	public GameObject dBox;
-	public Text text;
+	public Text dText;
 	public bool dialogActive;
 	// Use this for initialization
 	void Start () {
@@ -16,8 +16,14 @@ public class DialogueManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (dialogActive && Input.GetKeyDown(KeyCode.Space)) {
+		if (dialogActive && Input.GetKeyDown(KeyCode.X)) {
 			dBox.SetActive (false);
 		}
+	}
+
+	public void ShowBox(string dialogue) {
+		dialogActive = true;
+		dBox.SetActive (true);
+		dText.text = dialogue;
 	}
 }
