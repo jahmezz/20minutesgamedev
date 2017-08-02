@@ -18,8 +18,7 @@ public class DialogueHolder : MonoBehaviour {
 	}
 
 	void OnTriggerStay2D(Collider2D other) {
-		Debug.Log (other.gameObject.name);
-		if (other.gameObject.tag == "Player") {
+		if (!dMan.dialogActive && other.gameObject.tag == "Player") {
 			if(Input.GetKeyUp(KeyCode.X)) {
 				dMan.ShowBox(dialogue);
 			}

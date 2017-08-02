@@ -18,6 +18,8 @@ public class DialogueManager : MonoBehaviour {
 	void Update () {
 		if (dialogActive && Input.GetKeyDown(KeyCode.X)) {
 			dBox.SetActive (false);
+			dialogActive = false;
+			Debug.Log ("Deactivate");
 		}
 	}
 

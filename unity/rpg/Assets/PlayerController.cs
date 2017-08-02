@@ -5,16 +5,18 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 	public int direction = 0;
 	Animator animator;
+	private Rigidbody2D rb;
 	// Use this for initialization
 	void Start() {
 		animator = GetComponent<Animator> ();
+		rb = GetComponent<Rigidbody2D> ();
 	}
 	
 	// Update is called once per frame
 	void Update() {
 		CheckInput ();
 	}
-	float speed = 0.3f;
+	float speed = 5f;
 	void CheckInput() {
 		//raw means the only possible values are -1, 0, and 1
 		var h = Input.GetAxisRaw ("Horizontal");
@@ -37,7 +39,7 @@ public class PlayerController : MonoBehaviour {
 		}
 		var move = new Vector2 (h, v);
 		move.Normalize ();
-		this.transform.Translate (move * speed);
+		rb.velocity = (move * speed);
 		animator.SetInteger ("direction", direction);
 	}
 
