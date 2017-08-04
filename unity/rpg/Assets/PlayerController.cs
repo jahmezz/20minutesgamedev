@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 	public int direction = 0;
 	Animator animator;
 	private Rigidbody2D rb;
+
 	// Use this for initialization
 	void Start() {
 		animator = GetComponent<Animator> ();
