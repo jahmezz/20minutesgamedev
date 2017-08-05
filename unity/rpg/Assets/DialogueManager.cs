@@ -12,9 +12,11 @@ public class DialogueManager : MonoBehaviour {
 
 	public string[] dialogueLines;
 	public int currentLine;
+
+	private PlayerController player;
 	// Use this for initialization
 	void Start () {
-		
+		player = FindObjectOfType<PlayerController> ();
 	}
 	
 	// Update is called once per frame
@@ -32,6 +34,8 @@ public class DialogueManager : MonoBehaviour {
 			dialogActive = false;
 			Debug.Log ("Deactivate");
 
+			player.canMove = true;
+
 			currentLine = 0;
 		}
 
@@ -47,5 +51,6 @@ public class DialogueManager : MonoBehaviour {
 	public void ShowDialogue() {
 		dialogActive = true;
 		dBox.SetActive (true);
+		player.canMove = false;
 	}
 }

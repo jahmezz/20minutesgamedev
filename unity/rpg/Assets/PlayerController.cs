@@ -7,14 +7,24 @@ public class PlayerController : MonoBehaviour {
 	Animator animator;
 	private Rigidbody2D rb;
 
+	public bool canMove;
+	public bool playerMoving;
+
 	// Use this for initialization
 	void Start() {
 		animator = GetComponent<Animator> ();
 		rb = GetComponent<Rigidbody2D> ();
+
+		canMove = true;
 	}
 	
 	// Update is called once per frame
 	void Update() {
+		playerMoving = false;
+		if(!canMove) {
+			rb.velocity = Vector2.zero;
+			return;
+		}
 		CheckInput ();
 	}
 	float speed = 5f;

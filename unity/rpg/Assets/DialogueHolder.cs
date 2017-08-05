@@ -28,6 +28,10 @@ public class DialogueHolder : MonoBehaviour {
 					dMan.currentLine = 0;
 					dMan.ShowDialogue ();
 				}
+
+				if(transform.parent.GetComponent<PlayerController>() != null) {
+					transform.parent.GetComponent<PlayerController>().canMove = false;
+				}
 			}
 		}
 	}
