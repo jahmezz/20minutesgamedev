@@ -31,6 +31,8 @@ public class DialogueHolder : MonoBehaviour {
 
 				if(transform.parent.GetComponent<PlayerController>() != null) {
 					transform.parent.GetComponent<PlayerController>().canMove = false;
+				} else if (transform.parent.GetComponent<book>() != null ) {
+					transform.parent.GetComponent<book> ().dialogue = true;
 				}
 			}
 		}
