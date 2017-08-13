@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour {
 		}
 		CheckInput ();
 	}
-	float speed = 5f;
+	float speed = 15f;
 	void CheckInput() {
 		//raw means the only possible values are -1, 0, and 1
 		var h = Input.GetAxisRaw ("Horizontal");
