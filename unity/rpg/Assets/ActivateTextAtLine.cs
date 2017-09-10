@@ -13,18 +13,17 @@ public class ActivateTextAtLine : MonoBehaviour {
 
 	public bool destroyWhenActivated;
 
+	public bool requireButtonPress;
+	private bool waitForPress;
+
 	// Use this for initialization
 	void Start () {
-		theTextBox = FindObjectOfType<TextBoxManager> ();
+		manager = FindObjectOfType<TextBoxManager> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
-
-	void OnTriggerEnter2D(Collider2D other) {
-		if(other.name == "Player") {
+		if(waitForPress && Input.GetKeyDown(KeyCode.Space)) {
 			manager.ReloadScript (theText);
 			manager.currentLine = startLine;
 			manager.endAtLine = endLine;
@@ -33,6 +32,29 @@ public class ActivateTextAtLine : MonoBehaviour {
 			if(destroyWhenActivated) {
 				Destroy (gameObject);
 			}
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		if(other.name == "Player") {
+			if(requireButtonPress) {
+				waitForPress = true;
+				return;
+			}
+			manager.ReloadScript (theText);
+			manager.currentLine = startLine;
+			manager.endAtLine = endLine;
+			manager.enableTextBox ();
+
+			if(destroyWhenActivated) {
+				Destroy (gameObject);
+			}
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D other) {
+		if(other.name == "Player") {
+			waitForPress = false;
 		}
 	}
 }

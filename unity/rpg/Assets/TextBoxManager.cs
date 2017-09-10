@@ -20,6 +20,11 @@ public class TextBoxManager : MonoBehaviour {
 
 	public bool stopPlayerMovement;
 
+	private bool isTyping = false;
+	private bool cancelTyping = false;
+
+	public float typeSpeed;
+
 	// Use this for initialization
 	void Start () {
 		textBox.SetActive (true);
@@ -39,15 +44,35 @@ public class TextBoxManager : MonoBehaviour {
 		if(!isActive) {
 			return;
 		}
-		theText.text = textLines [0];
-		Debug.Log (textLines [0]);
+		//theText.text = textLines [currentLine];
 		if(Input.GetKeyDown(KeyCode.Return)) {
-			currentLine++;
-		}
+			if(!isTyping) {
+				currentLine++;
 
-		if(currentLine > endAtLine) {
-			disableTextBox ();
+				if(currentLine > endAtLine) {
+					disableTextBox ();
+				} else {
+					StartCoroutine (TextScroll(textLines[currentLine]));
+				}
+			} else if (isTyping && !cancelTyping) {
+				cancelTyping = true;
+			}
 		}
+	}
+
+	private IEnumerator TextScroll(string lineOfText) {
+		int letter = 0;
+		theText.text = "";
+		isTyping = true;
+		cancelTyping = false;
+		while(isTyping && !cancelTyping && letter < lineOfText.Length - 1) {
+			theText.text += lineOfText [letter];
+			letter += 1;
+			yield return new WaitForSeconds (typeSpeed);
+		}
+		theText.text = lineOfText;
+		isTyping = false;
+		cancelTyping = false;
 	}
 
 	public void enableTextBox() {

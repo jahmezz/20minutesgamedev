@@ -22,9 +22,10 @@ public class DialogueHolder : MonoBehaviour {
 	void OnTriggerStay2D(Collider2D other) {
 		if (!dMan.dialogActive && other.gameObject.tag == "Player") {
 			if(Input.GetKeyUp(KeyCode.X)) {
-//				dMan.ShowBox(dialogue);
 				if (!dMan.dialogActive) {
+					dMan.dialogueLines = null;
 					dMan.dialogueLines = dialogueLines;
+					dMan.dialogActive = true;
 					dMan.currentLine = 0;
 					dMan.ShowDialogue ();
 				}
