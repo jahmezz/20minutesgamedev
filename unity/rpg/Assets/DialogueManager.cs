@@ -6,14 +6,17 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour {
 
 	public GameObject dBox;
-	public Text dText;
+	public Text dialogueText;
+	public Text choiceText;
 	public bool dialogActive;
 
 	public string[] dialogueLines;
+	public string[] choiceLines;
 	public int currentLine;
 
 	private bool isTyping = false;
 	private bool cancelTyping = false;
+	private bool isSelecting = false;
 
 	private float typeSpeed;
 	private PlayerController player;
@@ -25,6 +28,8 @@ public class DialogueManager : MonoBehaviour {
 		player = FindObjectOfType<PlayerController>();
 		book = FindObjectOfType<book> ();
 		dBox.SetActive (false);
+		choiceText.text = "";
+		choiceText.enabled = false;
 		typeSpeed = 0.05f;
 	}
 	
@@ -34,15 +39,20 @@ public class DialogueManager : MonoBehaviour {
 			return;
 		}
 
-		//advance line
+		//action button
 		if(Input.GetKeyDown(KeyCode.X)) {
 			//dialogue finished scrolling
-			if(!isTyping) {
+			if(isSelecting) {
+				HideBox ();
+			} else if(!isTyping) {
 				currentLine++;
-				//end of dialogue
+				//show choices
 				if(currentLine >= dialogueLines.Length) {
-					HideBox();
-				//scroll through next line
+					if(choiceLines != null) {
+						ShowChoices ();
+					} else {
+						HideBox ();
+					}
 				} else {
 					StartCoroutine (TextScroll(dialogueLines[currentLine]));
 				}
@@ -53,17 +63,32 @@ public class DialogueManager : MonoBehaviour {
 		}
 	}
 
+	private void ShowChoices() {
+		isSelecting = true;
+		choiceText.text = PrintChoices();
+		choiceText.enabled = true;
+
+	}
+
+	private string PrintChoices() {
+		char arrow = '\u25b6';
+		string result = arrow.ToString();
+		for(int i = 0; i < choiceLines.Length; i++) {
+			result += choiceLines [i] + "\n";
+		}
+		return result;
+	}
 	private IEnumerator TextScroll(string LineOfText) {
 		int letter = 0;
-		dText.text = "";
+		dialogueText.text = "";
 		isTyping = true;
 		cancelTyping = false;
 		while(isTyping && !cancelTyping && letter < LineOfText.Length - 1) {
-			dText.text += LineOfText [letter];
+			dialogueText.text += LineOfText [letter];
 			letter += 1;
 			yield return new WaitForSeconds (typeSpeed);
 		}
-		dText.text = LineOfText;
+		dialogueText.text = LineOfText;
 		isTyping = false;
 		cancelTyping = false;
 	}
@@ -71,7 +96,7 @@ public class DialogueManager : MonoBehaviour {
 	public void ShowBox(string dialogue) {
 		dialogActive = true;
 		dBox.SetActive (true);
-		dText.text = dialogue;
+		dialogueText.text = dialogue;
 	}
 
 	public void HideBox() {

@@ -8,6 +8,7 @@ public class DialogueHolder : MonoBehaviour {
 	private DialogueManager dMan;
 
 	public string[] dialogueLines;
+	public string[] choiceLines;
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +26,8 @@ public class DialogueHolder : MonoBehaviour {
 				if (!dMan.dialogActive) {
 					dMan.dialogueLines = null;
 					dMan.dialogueLines = dialogueLines;
+					dMan.choiceLines = choiceLines;
+					Debug.Log (dMan.choiceLines);
 					dMan.dialogActive = true;
 					dMan.currentLine = 0;
 					dMan.ShowDialogue ();
