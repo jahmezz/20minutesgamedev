@@ -7,12 +7,15 @@ public class DialogueManager : MonoBehaviour {
 
 	public GameObject dBox;
 	public Text dialogueText;
-	public Text choiceText;
+	public Text choiceText1;
+	public Text choiceText2;
 	public bool dialogActive;
 
 	public string[] dialogueLines;
 	public string[] choiceLines;
 	public int currentLine;
+
+	private bool currentChoice;
 
 	private bool isTyping = false;
 	private bool cancelTyping = false;
@@ -28,15 +31,27 @@ public class DialogueManager : MonoBehaviour {
 		player = FindObjectOfType<PlayerController>();
 		book = FindObjectOfType<book> ();
 		dBox.SetActive (false);
-		choiceText.text = "";
-		choiceText.enabled = false;
+		currentChoice = true;
+		choiceText1.text = "";
+		choiceText1.enabled = false;
+		choiceText2.text = "";
+		choiceText2.enabled = false;
+
 		typeSpeed = 0.05f;
 	}
-	
+
+	private bool UpOrDown() {
+		return Input.GetKeyDown (KeyCode.DownArrow) || Input.GetKeyDown (KeyCode.UpArrow);
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if (!dialogActive) {
 			return;
+		}
+		if(isSelecting && UpOrDown()) {
+			currentChoice = !currentChoice;
+			ShowChoices ();
 		}
 
 		//action button
@@ -65,17 +80,23 @@ public class DialogueManager : MonoBehaviour {
 
 	private void ShowChoices() {
 		isSelecting = true;
-		choiceText.text = PrintChoices();
-		choiceText.enabled = true;
+
+		choiceText1.text = PrintChoices(currentChoice, 0);
+		choiceText1.enabled = true;
+		choiceText2.text = PrintChoices(!currentChoice, 1);
+		choiceText2.enabled = true;
 
 	}
 
-	private string PrintChoices() {
+	private string PrintChoices(bool choice, int ar) {
 		char arrow = '\u25b6';
-		string result = arrow.ToString();
-		for(int i = 0; i < choiceLines.Length; i++) {
-			result += choiceLines [i] + "\n";
+
+		string result = "";
+		if(choice) {
+			result += arrow.ToString () + " ";
 		}
+
+		result += choiceLines[ar] + "\n";
 		return result;
 	}
 	private IEnumerator TextScroll(string LineOfText) {
@@ -104,6 +125,9 @@ public class DialogueManager : MonoBehaviour {
 		dBox.SetActive (false);
 		player.canMove = true;
 		book.dialogue = false;
+		isSelecting = false;
+		choiceText1.enabled = false;
+		choiceText2.enabled = false;
 	}
 
 	public void ShowDialogue() {
