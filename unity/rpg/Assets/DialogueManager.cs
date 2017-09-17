@@ -13,6 +13,7 @@ public class DialogueManager : MonoBehaviour {
 
 	public string[] dialogueLines;
 	public string[] choiceLines;
+	public string[] answerLines;
 	public int currentLine;
 
 	private bool currentChoice;
@@ -20,6 +21,7 @@ public class DialogueManager : MonoBehaviour {
 	private bool isTyping = false;
 	private bool cancelTyping = false;
 	private bool isSelecting = false;
+	private bool isAnswer = false;
 
 	private float typeSpeed;
 	private PlayerController player;
@@ -56,20 +58,41 @@ public class DialogueManager : MonoBehaviour {
 
 		//action button
 		if(Input.GetKeyDown(KeyCode.X)) {
+			//states: selecting, answering, dialogue
+
 			//dialogue finished scrolling
 			if(isSelecting) {
-				HideBox ();
+				//choice selected
+				isAnswer = true;
+				isSelecting = false;
+				currentLine = 0;
+				StartCoroutine (TextScroll(answerLines[currentLine]));
 			} else if(!isTyping) {
 				currentLine++;
-				//show choices
-				if(currentLine >= dialogueLines.Length) {
+				string[] lines = null;
+				if(isAnswer) {
+					lines = answerLines;
+				} else {
+					lines = dialogueLines;
+				}
+				if(!isAnswer && currentLine >= lines.Length) {
 					if(choiceLines != null) {
 						ShowChoices ();
 					} else {
 						HideBox ();
 					}
 				} else {
-					StartCoroutine (TextScroll(dialogueLines[currentLine]));
+					if(isAnswer) {
+						if (currentLine >= lines.Length) {
+							isAnswer = false;
+							HideBox ();	
+						} else {
+							StartCoroutine (TextScroll (answerLines [currentLine]));
+						}
+					} else {
+						StartCoroutine (TextScroll(dialogueLines[currentLine]));
+					}
+
 				}
 			//currently scrolling
 			} else if (isTyping && !cancelTyping) {

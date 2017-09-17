@@ -10,6 +10,8 @@ public class DialogueHolder : MonoBehaviour {
 	public string[] dialogueLines;
 	public string[] choiceLines;
 
+	public string[] answerLines;
+
 	// Use this for initialization
 	void Start () {
 		dMan = FindObjectOfType<DialogueManager> ();
@@ -27,6 +29,7 @@ public class DialogueHolder : MonoBehaviour {
 					dMan.dialogueLines = null;
 					dMan.dialogueLines = dialogueLines;
 					dMan.choiceLines = choiceLines;
+					dMan.answerLines = answerLines;
 					Debug.Log (dMan.choiceLines);
 					dMan.dialogActive = true;
 					dMan.currentLine = 0;
