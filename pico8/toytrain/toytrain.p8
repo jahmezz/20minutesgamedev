@@ -14,21 +14,41 @@ end
 function move_segment(s,dir)
  spd=dir*2
  -- move along edge of screen
- if(s[2]==8 and s[1]==112) --right
+ if(s[1]==112 and s[2]==8) --topright
  then
-  s[3]=1
+  if dir==1
+  then
+   s[3]=1
+  else
+   s[3]=4
+  end
  end
- if(s[1]==112 and s[2]==112) --bottom
+ if(s[1]==112 and s[2]==112) --bottomright
  then
-  s[3]=2
+  if dir==1
+  then
+   s[3]=2
+  else
+   s[3]=1
+  end
  end
- if(s[2]==112 and s[1]==8) --left
+ if(s[1]==8 and s[2]==112) --left
  then 
-  s[3]=3
+  if dir==1
+  then
+   s[3]=3
+  else
+   s[3]=2
+  end
  end
  if(s[1]==8 and s[2]==8) --top
  then
-  s[3]=4
+  if dir==1
+  then
+   s[3]=4
+  else
+   s[3]=3
+  end
  end
  
  if(s[3]==1)
@@ -51,11 +71,11 @@ end
 
 --switch between 0 and 1
 function adv_switch(pressed)
- if(pressed==1 or pressed==3)
+ if(pressed==2 or pressed==4)
  then
   switch_state+=1
  else
-  if pressed==2 or pressed==4
+  if pressed==1 or pressed==8
   then
    switch_state-=1
   end
@@ -63,15 +83,15 @@ function adv_switch(pressed)
  --overflow
  if switch_state > 1
  then
-  switch_state=0
+  switch_state=-1
+ elseif switch_state < -1
+ then
+  switch_state=1
+ elseif switch_state==0
+ then
   sfx(-1,1)
  else
-  if switch_state==0
-  then
-   sfx(-1,1)
-  else
-   sfx(2,1)
-  end
+  sfx(2,1)
  end
 end
 
@@ -134,7 +154,6 @@ function _draw()
  map(0,0,0,0,16,16)
  draw_switch()
  draw_train()
- print(pressed,0,0)
 end
 __gfx__
 00000000000000044444444444455444444444444444444444444444667666560dddddd00dddddd00dddddd00dddddd00dddddd00dddddd00000000000000000
