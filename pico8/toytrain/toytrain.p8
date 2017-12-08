@@ -8,11 +8,15 @@ function _init()
  cls()
  switch_state=0
  train={{64,8,4},{72,8,4},{80,8,4}}
-end
+ gear=0
+ max_gear=2
+ frame_count=0
+ shift_frames=9
+ end
 
 
 function move_segment(s,dir)
- spd=dir*2
+ spd=gear
  -- move along edge of screen
  if(s[1]==112 and s[2]==8) --topright
  then
@@ -67,6 +71,14 @@ function move_segment(s,dir)
  then
   s[1]+=spd
  end
+ s[1]=box(s[1])
+ s[2]=box(s[2])
+end
+
+function box(number)
+ number=max(8, number)
+ number=min(112, number)
+ return number
 end
 
 --switch between 0 and 1
@@ -96,6 +108,34 @@ function adv_switch(pressed)
 end
 
 function move_train()
+ frame_count+=1
+ if frame_count>shift_frames
+ then
+  frame_count=0
+  if switch_state==1
+  then
+   gear+=1
+  elseif switch_state==-1
+  then
+   gear-=1
+  else
+   if gear>0
+   then
+    gear-=1
+   elseif gear<0
+   then
+    gear+=1
+   end
+  end
+  
+  if gear>0
+  then
+   gear=min(gear, max_gear)
+  else
+   gear=max(gear, -max_gear)
+  end
+ end
+ 
  x=train[1][1]
  y=train[1][2]
  for t in all(train) do
