@@ -7,72 +7,55 @@ __lua__
 function _init()
  cls()
  switch_state=0
- train={{64,8,4},{72,8,4},{80,8,4}}
  gear=0
  max_gear=2
  frame_count=0
- shift_frames=9
+ shift_frames=2
+ acc=0.2
+ offset=8
+ train={{64,8,56},{72,8,64},{80,8,72}}
  end
 
 
 function move_segment(s,dir)
- spd=gear
- -- move along edge of screen
- if(s[1]==112 and s[2]==8) --topright
+ --think of the entire
+ --track as a single number
+ --line
+ --when the number is between
+ --a certair range, it is on
+ --a certain part of the track
+ --and moving a certain dir
+ --move along edge of screen
+ --this way, we only have to
+ --track the first car and
+ --offset for the rest
+ 
+ s[3]+=gear
+ -- overflow case
+ if s[3]>416
  then
-  if dir==1
-  then
-   s[3]=1
-  else
-   s[3]=4
-  end
- end
- if(s[1]==112 and s[2]==112) --bottomright
+  s[3]-=416
+ elseif s[3]<0
  then
-  if dir==1
-  then
-   s[3]=2
-  else
-   s[3]=1
-  end
- end
- if(s[1]==8 and s[2]==112) --left
- then 
-  if dir==1
-  then
-   s[3]=3
-  else
-   s[3]=2
-  end
- end
- if(s[1]==8 and s[2]==8) --top
- then
-  if dir==1
-  then
-   s[3]=4
-  else
-   s[3]=3
-  end
+  s[3]+=416
  end
  
- if(s[3]==1)
+ s[1]=offset
+ s[2]=offset
+ --case 0 to 104
+ s[1]+=min(104,s[3])
+ if s[3]>104
  then
-  s[2]+=spd
+  s[2]+=min(104, s[3]-104)
  end
- if(s[3]==2)
+ if s[3]>208
  then
-  s[1]-=spd
+  s[1]-=min(104,s[3]-208)
  end
- if(s[3]==3)
+ if s[3]>312
  then
-  s[2]-=spd
+  s[2]-=min(104,s[3]-312)
  end
- if(s[3]==4)
- then
-  s[1]+=spd
- end
- s[1]=box(s[1])
- s[2]=box(s[2])
 end
 
 function box(number)
@@ -114,17 +97,23 @@ function move_train()
   frame_count=0
   if switch_state==1
   then
-   gear+=1
+   gear+=acc
   elseif switch_state==-1
   then
-   gear-=1
+   gear-=acc
   else
    if gear>0
    then
-    gear-=1
+    gear-=acc
+    if gear<0
+    then gear=0
+    end
    elseif gear<0
    then
-    gear+=1
+    gear+=acc
+    if gear>0
+    then gear=0
+    end
    end
   end
   
@@ -135,10 +124,8 @@ function move_train()
    gear=max(gear, -max_gear)
   end
  end
- 
- x=train[1][1]
- y=train[1][2]
- for t in all(train) do
+ for t in all(train)
+ do
   move_segment(t,switch_state)
  end
 end
